@@ -17,7 +17,7 @@
   .b-full { background:#123527; color:#5fd39a; }
   .b-live { background:#12294a; color:#6ea8ff; }
   .b-todo { background:#3a2e12; color:#e0b45c; }
-  .tabs { display:flex; gap:8px; margin-bottom:14px; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
   .tab { border:1px solid #2a3a5c; background:#111726; color:#c5d0e6; border-radius:999px; padding:8px 20px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; transition:all .15s; }
   .tab:hover { border-color:#4f7cff; }
   .tab.on { background:#4f7cff; color:#fff; border-color:#4f7cff; }
@@ -118,6 +118,7 @@
     <span class="tab" data-t="cases">📂 案例庫</span>
     <span class="tab" data-t="collect">🧰 收集箱</span>
     <span class="tab" data-t="guide">🧭 協作心法</span>
+    <a class="tab" href="news/" style="text-decoration:none">📰 AI 新聞</a>
   </div>
 
   <div id="tab-course">
@@ -356,7 +357,7 @@
 
   </div>
 
-  <footer>Suniverse AI 學院 · 案例持續更新中 · 教材原始檔在 ai-academy/cases/</footer>
+  <footer>Suniverse AI 學院 · 案例持續更新中 · 每日 AI 新聞 <a href="news/" style="color:#6ea8ff">→ 看今天的</a></footer>
 </div>
 
 <script>
@@ -758,9 +759,9 @@ document.getElementById("cq").addEventListener("input", e => {
 });
 
 // 分頁
-document.querySelectorAll(".tab").forEach(tab => {
+document.querySelectorAll(".tab[data-t]").forEach(tab => {
   tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));
+    document.querySelectorAll(".tab[data-t]").forEach(t=>t.classList.remove("on"));
     tab.classList.add("on");
     ["course","cases","collect","guide"].forEach(t => {
       document.getElementById("tab-"+t).style.display = tab.dataset.t===t ? "" : "none";

@@ -45,6 +45,7 @@
   .card.open .detail { display:block; }
   .lessons { margin:0 0 4px; padding-left:18px; }
   .lessons li { font-size:12.5px; color:#aebbd6; margin-bottom:4px; }
+  .cimg { display:block; width:100%; margin:8px 0; border-radius:10px; }
   .prompt { margin-top:8px; background:#0a0e18; border:1px solid #1f2c48; color:#b9c9e6; border-radius:10px; padding:12px 14px; font-family:ui-monospace,Menlo,monospace; font-size:12px; line-height:1.6; white-space:pre-wrap; max-height:260px; overflow:auto; }
   .copy { margin-top:8px; border:none; background:#4f7cff; color:#fff; border-radius:8px; padding:6px 14px; font-size:12.5px; cursor:pointer; align-self:flex-start; }
   .copy:active { transform:scale(.97); }
@@ -484,6 +485,33 @@ const CASES = [
 // type: Skill | Agent | 案例 | 教學
 const COLLECT = [
  {
+  type:"Prompt", title:"照片變像素小模型（上下雙聯）",
+  desc:"上半原照片，下半同一個場景變成方塊堆出來的迷你模型。提示詞是我們依靈感來源重寫的版本，效果圖用自己的素材實測，非原作者作品。",
+  author:"靈感：cicichang.journal", url:"https://www.threads.com/share/BAa043WuC1/", img:"assets/prompts/voxel-diorama.jpg",
+  prompt:`把附上的照片做成 3:4 直式雙聯圖,上下各半,中間不要分隔線。
+上半:原照片,不改內容。
+下半:同一個場景重新做成像素遊戲風的迷你模型。主體用立體方塊堆出來,顏色和形狀要認得出來;周圍簡化成柔和粉彩,邊緣慢慢散成小方塊。背景是素淨的奶油色,模型下方有一點柔和陰影,再放一行寬字距的大寫英文地名。
+不要數字、不要多餘文字、不要浮水印。`
+ },
+ {
+  type:"Prompt", title:"照片變壓克力回憶地圖",
+  desc:"從照片挑幾個記憶點，做成透明壓克力小收藏品，用虛線串成一張私人地圖。關鍵是不准用四宮格。提示詞為重寫版，效果圖為自家實測。",
+  author:"靈感：lch1776244", url:"https://www.threads.com/share/BAACTHDBrj/", img:"assets/prompts/acrylic-memory-map.jpg",
+  prompt:`把附上的照片做成 3:4 直式海報,上下各半。
+上半:原照片,只輕微調色,不改主體。
+下半:從照片挑 4 到 7 個最值得記住的小物件或細節,做成透明壓克力包邊的小收藏品,保留真實質感,不要卡通化。
+排版用斜向或 S 形動線,大小要有對比,不要四宮格。物件之間用細虛線和小箭頭連起來,像一張私人回憶地圖。留白要夠,色調柔和乾淨。`
+ },
+ {
+  type:"Prompt", title:"雜誌感字體海報",
+  desc:"讓巨型英文字和照片主體前後穿插，而不是貼在圖上。關鍵是把文字當畫面結構，不當裝飾。提示詞為重寫版，效果圖為自家實測。",
+  author:"靈感：more.yu_", url:"https://www.threads.com/share/_mwt5GKtU/", img:"assets/prompts/type-poster.jpg",
+  prompt:`把附上的照片做成 3:4 直式實驗字體海報。
+上半大面積留白,下半保留原照片和真實背景。
+依照片主題想一個簡短有力的英文標題,做成巨型字體,讓字和主體前後穿插:有些筆畫被主體擋住,有些繞到主體前面,不要平貼在照片上。
+只放一個標題,不要副標、邊框、裝飾和浮水印。`
+ },
+ {
   type:"Skill", title:"Anthropic 官方 Skills 資源庫",
   desc:"官方開源的 Skills 集合：docx / pptx / xlsx / pdf 文件處理、skill-creator（做自己的 skill）等，裝進 Claude Code 就能用。想學「Skill 該怎麼寫」直接看官方原始碼最快。",
   author:"Anthropic", url:"https://github.com/anthropics/skills",
@@ -652,7 +680,7 @@ function render() {
 }
 
 // ====== 收集箱渲染 ======
-const TYPE_COLORS = { "Skill":"#5fd39a", "Agent":"#b48cff", "案例":"#6ea8ff", "教學":"#e0b45c", "來源":"#f08fb0" };
+const TYPE_COLORS = { "Skill":"#5fd39a", "Agent":"#b48cff", "案例":"#6ea8ff", "教學":"#e0b45c", "來源":"#f08fb0", "Prompt":"#7fd0d8" };
 let curType = "all", curCQ = "";
 
 function renderCollect() {
@@ -674,6 +702,7 @@ function renderCollect() {
       <div class="body">
         <div class="cat" style="color:${color}">${c.type}</div>
         <h3>${c.title}</h3>
+        ${c.img ? `<img class="cimg" src="${c.img}" alt="${c.title} 效果圖" loading="lazy">` : ``}
         <div class="desc">${c.desc}</div>
         <div class="meta">✍️ ${c.author}　<a href="${c.url}" target="_blank">🔗 原始出處</a></div>
         ${detail ? `<span class="ptoggle">▸ 展開 prompt</span><div class="detail">${detail}</div>` : ``}

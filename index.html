@@ -45,7 +45,7 @@
   .card.open .detail { display:block; }
   .lessons { margin:0 0 4px; padding-left:18px; }
   .lessons li { font-size:12.5px; color:#aebbd6; margin-bottom:4px; }
-  .cimg { display:block; width:100%; margin:8px 0; border-radius:10px; }
+  .cimg { display:block; width:100%; margin:8px 0; border-radius:10px; max-height:340px; object-fit:contain; background:#0a0e18; }
   .prompt { margin-top:8px; background:#0a0e18; border:1px solid #1f2c48; color:#b9c9e6; border-radius:10px; padding:12px 14px; font-family:ui-monospace,Menlo,monospace; font-size:12px; line-height:1.6; white-space:pre-wrap; max-height:260px; overflow:auto; }
   .copy { margin-top:8px; border:none; background:#4f7cff; color:#fff; border-radius:8px; padding:6px 14px; font-size:12.5px; cursor:pointer; align-self:flex-start; }
   .copy:active { transform:scale(.97); }
@@ -512,6 +512,116 @@ const COLLECT = [
 只放一個標題,不要副標、邊框、裝飾和浮水印。`
  },
  {
+  type:"Prompt", title:"照片變復古絲網印刷海報",
+  desc:"上半是原片，下半把主體改成粗網點和套色印刷。重點是「不要描摹照片」，要轉成剪影和色塊，上下才有對比。提示詞為重寫版，效果圖為自家實測。",
+  author:"靈感：收藏的街拍海報提示詞（來源未記錄）", img:"assets/prompts/retro-print.jpg",
+  prompt:`把附上的照片做成 3:4 直式海報,上下各半,一張照片做一張。
+上半:保留原照片,主體不改,只做克制的底片調色和輕微顆粒。需要延展畫幅時自然補環境,不要拉伸主體。
+下半:取上方最有辨識度的輪廓、姿態或建築結構,重新做成復古絲網印刷:高反差剪影、粗網點半調、顆粒色塊、局部套色,兩到三色。不要精細寫實,但關鍵特徵要留住,讓上下一眼對應。`
+ },
+ {
+  type:"Prompt", title:"汽車雜誌封面",
+  desc:"寫清楚鏡頭和快門，比寫「很有速度感」有用。效果圖用虛構的無品牌車款，提示詞為重寫版。",
+  author:"靈感：IG 汽車廣告提示詞", url:"https://www.instagram.com/reel/DahQbhXzjL-/", img:"assets/prompts/car-cover.jpg",
+  prompt:`〔車款〕行駛在陽光下的海岸公路,金色陽光照亮車身。
+高級汽車雜誌封面風,上方放大型英文字「〔車名或標題〕」,排版極簡。
+24-70mm F2.8 鏡頭,1/30 秒慢快門追焦,路面和背景有真實動態模糊,車身清楚。電影級寫實。畫面比例 9:16。`
+ },
+ {
+  type:"Prompt", title:"四聯角色版：讓 AI 記住同一張臉",
+  desc:"遠景人臉太小，模型只能自己猜，所以會變臉。把全身三視圖的頭去掉，逼它去參考正臉特寫。效果圖是虛構人物，提示詞為重寫版。",
+  author:"靈感：AI 短劇教學圖（2026-10 收藏）", img:"assets/prompts/character-sheet.jpg",
+  prompt:`做一張 16:9 角色設定板,純白背景,一字排開四格,大小一致。
+第 1 到 3 格:〔角色〕的全身正面、側面、背面,三格都不畫頭,衣領以上留白。
+第 4 格:完整頭部的正臉特寫。
+服裝、配件、膚色四格完全一致。不要文字、標註和浮水印。
+
+使用時:影片提示詞同時附這張圖,並用文字寫明髮型、服裝和配件。依劇本再多做受傷、換裝、不同表情的版本。`
+ },
+ {
+  type:"Prompt", title:"場景九宮格：換鏡頭不穿幫",
+  desc:"穿幫通常不是提示詞太短，是每一鏡都重新發明房間。先把同一空間的九個機位做出來，後面都引用它。效果圖是虛構場景，提示詞為重寫版。",
+  author:"整理自 AI 短劇場景一致性教學", img:"assets/prompts/scene-grid.jpg",
+  prompt:`做一張 1:1 九宮格,九格都是同一個〔場景〕,不同機位:全景、門口看向內部、反向、局部近景、俯視、低角度、左牆、右牆、重要道具特寫。
+九格的家具位置、門窗方向、色盤和光線必須完全一致。〔列出固定物件和光源方向〕。
+沒有人物,細白線分格,不要文字和浮水印。
+
+使用時:從中挑機位當參考圖,之後的提示詞只寫鏡頭和動作,不要重新描述整個房間。`
+ },
+ {
+  type:"Prompt", title:"旅行 Reel 地圖飛行開場",
+  desc:"給 Codex 或 Claude Code，用 Remotion 做一段航線開場。要先出預覽，再交影片。提示詞為重寫版。",
+  author:"靈感：waltercheng.ai", url:"https://www.threads.com/share/BAESwkT0OD/",
+  prompt:`用 Remotion 做一段 15 秒、9:16、無聲的旅行開場,從〔出發地〕飛到〔目的地〕。
+附上的人物插畫坐在小飛機裡。鏡頭從起點拉遠,跟著逐段畫出的航線移動,到終點推近,停 2 秒。
+用真實城市座標和免費地圖資料,城市名要清楚。不要做成截圖 slideshow。
+先給我預覽,確認後再交 MP4 和可編輯的工程檔。`
+ },
+ {
+  type:"Prompt", title:"網址變 15 秒品牌動畫",
+  desc:"關鍵是中間那一步：先交純文字分鏡等你確認，不要一口氣做完。提示詞為重寫版。",
+  author:"靈感：ai.marketing.hk", url:"https://www.threads.com/share/BAYuDBbiHN/",
+  prompt:`幫 〔網址〕 做一支 15 到 20 秒的 9:16 品牌動畫。
+第一步:讀網站,整理品牌色和主要賣點。
+第二步:給我純文字分鏡,等我確認,這一步不要開始做影片。
+第三步:確認後用 Remotion 或 HyperFrames 渲染成 MP4。
+只用網站上有的資訊,不要發明優惠或數字。避免泛用漸層和隨機粒子。`
+ },
+ {
+  type:"Prompt", title:"落地頁風格打樣模板",
+  desc:"先定風格再談細節。把美學方向和字體寫死，AI 才不會每次都給同一種網站。十種方向列在提示詞裡，換一個就是新版本。提示詞為重寫版。",
+  author:"靈感：ekcheung90 的 10 種風格整理", url:"https://www.heyommi.com/g/ekcheung90/prompt",
+  prompt:`幫 〔產品〕 做一頁落地頁,對象是〔受眾〕,主要目標是〔目標〕。
+美學方向:〔選一個〕
+- 玻璃擬態:半透明面板、柔和模糊、細白邊
+- 新粗野主義:超大標題、粗黑框、硬陰影
+- 奢華雜誌:襯線大標、象牙與炭灰、大量留白
+- 蘋果式發表:黑底、緊湊大標、只用一個強調色
+- 便當格:暖白底、大小不一的功能卡
+- 復古未來:霓虹、金屬字、早期 3D
+- 日式極簡:克制、自然材質、留白有節奏
+- 暗色指揮中心:近黑底、等寬數字、狀態色
+- 自然雜誌:奶油底、森林綠、手作感
+- 數位工作室:作品就是介面、實驗性排版
+指定字體和顏色,全站統一。資料不足就標待補,不要編造數字。`
+ },
+ {
+  type:"Prompt", title:"動畫要交代的五件事",
+  desc:"「hover 時有翻轉效果」AI 只能猜。把這五格填完再送出，一次到位的機率高很多。",
+  author:"靈感：ai_cpocoder", url:"https://www.threads.com/share/BAcqVnDfr_/",
+  prompt:`幫〔元素〕做一個動畫:
+起點狀態:動之前長什麼樣。
+觸發:什麼時候開始。
+轉軸:繞哪裡轉、從哪裡長出來(transform-origin)。
+時長和收尾:幾秒,用 ease-out 或 spring 收。
+周邊元素:旁邊的東西要不要讓位。`
+ },
+ {
+  type:"Prompt", title:"讓介面不像 AI 做的",
+  desc:"一句話防止做成空表單。適合加在任何做 App 或網頁的提示詞後面。提示詞為重寫版。",
+  author:"靈感：chloemakesdesign", url:"https://www.instagram.com/reel/DewQBRMgZYD/",
+  prompt:`每個畫面都要有一個視覺重點,縮小看也要飽滿。
+用〔品牌色〕和附上的產品照,照片不要留灰框。
+做成可以點的:選項改變時,價格或結果要跟著變。`
+ },
+ {
+  type:"Prompt", title:"一句話動畫：給舞台不給分鏡",
+  desc:"不寫分鏡，只給目標和標準，適合找靈感。要做品牌片時還是要回到逐句分鏡。提示詞為重寫版。",
+  author:"靈感：freedumx01", url:"https://www.instagram.com/reel/De9XG1PJ2fd/",
+  prompt:`做一段 15 秒動畫,當作你展示動畫設計實力的作品集片段。全力以赴。`
+ },
+ {
+  type:"Prompt", title:"AI 配樂六組（附拍攝建議）",
+  desc:"音樂提示詞寫清楚秒數、BPM、樂器進場順序和收尾方式，比寫「輕鬆的音樂」有用。整理自 Gemini 的輸出。",
+  author:"Gemini 輸出整理",
+  prompt:`咖啡廳:60 秒,82 BPM。毛氈鋼琴加微弱黑膠雜音開場,15 秒帶入低音提琴和悶音吉他,鋼琴和弦淡出收尾。
+戶外咖啡廳:45 秒,112 BPM。烏克麗麗指彈開場,加刷擊小鼓和鐵琴,俐落刷弦收尾。
+商業理財:90 秒,120 BPM。極簡類比合成器加深沉低音和電子 Hi-hat,層次精準疊加,1 分 20 秒設循環點。
+旅行自然:75 秒,95 BPM。風聲腳步聲開場,加查蘭戈琴、尼龍吉他和柔和合成器,乾淨淡出。
+角色戲劇:120 秒,70 BPM。孤寂鋼琴獨奏,30 秒進空靈女聲哼唱,1 分 10 秒疊大提琴,長殘響收尾。
+懸疑:90 秒,80 BPM。低沉合成器持續音加斷奏小提琴和失真低音脈動,最高潮瞬間截斷。`
+ },
+ {
   type:"Skill", title:"Anthropic 官方 Skills 資源庫",
   desc:"官方開源的 Skills 集合：docx / pptx / xlsx / pdf 文件處理、skill-creator（做自己的 skill）等，裝進 Claude Code 就能用。想學「Skill 該怎麼寫」直接看官方原始碼最快。",
   author:"Anthropic", url:"https://github.com/anthropics/skills",
@@ -704,7 +814,7 @@ function renderCollect() {
         <h3>${c.title}</h3>
         ${c.img ? `<img class="cimg" src="${c.img}" alt="${c.title} 效果圖" loading="lazy">` : ``}
         <div class="desc">${c.desc}</div>
-        <div class="meta">✍️ ${c.author}　<a href="${c.url}" target="_blank">🔗 原始出處</a></div>
+        <div class="meta">✍️ ${c.author}${c.url ? `　<a href="${c.url}" target="_blank">🔗 原始出處</a>` : ``}</div>
         ${detail ? `<span class="ptoggle">▸ 展開 prompt</span><div class="detail">${detail}</div>` : ``}
       </div>`;
     if (detail) {

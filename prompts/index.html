@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prompt 卡 · AISUN!</title>
+<meta name="description" content="複製就能用的提示詞，每張都附自己實測的效果圖；另收 Skill、Agent、教學與好來源。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.cards{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.pc{padding:16px}
+.pc h3{font-size:16px;margin:8px 0 4px}
+.pc .d{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pc.open .d{-webkit-line-clamp:unset}
+.pc .m{font-size:12px}
+.pc .prompt{font-size:12.5px}
+.pc .ph{margin:10px -16px 4px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);background:var(--bg)}
+.pc .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pc .ty{font-size:12px}
+</style>
+</head>
+<body data-root="../" data-page="prompts">
+<div class="phead"><div class="t r-d rise" style="background:#fff;--sc:var(--cor)"><div class="burst" style="opacity:.0"></div><span class="big" aria-hidden="true" style="color:var(--sun)">PROMPT!</span><span class="lb">✦ Prompt 卡</span><h1>複製就能用<br>的提示詞</h1><p>看到好用的做法就收進來：提示詞是我們依靈感重寫的版本，效果圖用自己的素材實測，不是原作者的作品。每張都附原始出處。</p></div></div>
+<main class="wrap">
+ <div class="fbar" id="types"></div>
+ <div class="fbar" style="margin-top:-6px"><input class="search" id="q" type="search" placeholder="搜尋提示詞、作者、關鍵字…" aria-label="搜尋"></div>
+ <div class="cards" id="list"></div><div class="empty" id="empty">沒有符合的卡片</div>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+const BG=['var(--sun)','var(--mint)','var(--lil)','var(--peach)','#fff'],SC=['var(--cob)','var(--lil)','var(--cor)','var(--cob)','var(--cor)'],RD=['r-a','r-e','r-c','r-f','r-b','r-h','r-d'];
+const E=AISUN.esc,TBG={'Prompt':'var(--sun)','Skill':'var(--mint)','Agent':'var(--lil)','案例':'var(--peach)','教學':'#fff','來源':'var(--cor)'};
+let ALL=[],ty='Prompt',q='';
+function render(){
+ const L=ALL.filter(c=>(ty==='all'||c.type===ty)&&(!q||(c.title+c.desc+c.type+(c.author||'')+(c.prompt||'')).toLowerCase().includes(q)));
+ document.getElementById('list').innerHTML=L.map((c,i)=>`<article class="t card pc ${RD[i%7]} rise" style="--sc:${SC[i%5]}">
+  <span class="lb ty" style="background:${TBG[c.type]||'#fff'}">${E(c.type)}</span><h3>${E(c.title)}</h3>
+  ${c.img?`<div class="ph"><img src="../${E(c.img)}" alt="${E(c.title)} 效果圖" loading="lazy"></div>`:''}
+  <p class="d">${E(c.desc)}</p>
+  <p class="m">${E(c.author||'')}${c.url?` · <a href="${E(c.url)}" target="_blank" rel="noopener">原始出處</a>`:''}</p>
+  ${c.prompt?`<button class="more">展開提示詞 ▾</button><div class="detail"><div class="prompt" id="p${ALL.indexOf(c)}">${E(c.prompt)}</div><button class="btn sm" data-copy="p${ALL.indexOf(c)}">複製提示詞</button></div>`:''}
+ </article>`).join('');
+ document.getElementById('empty').style.display=L.length?'none':'block';
+ AISUN.rise();
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.more');if(b){const c=b.closest('.card');c.classList.toggle('open');b.textContent=c.classList.contains('open')?'收起 ▴':'展開提示詞 ▾'}});
+fetch('../data/prompts.json').then(r=>r.json()).then(list=>{ALL=list;
+ const types=['Prompt',...new Set(list.map(c=>c.type).filter(t=>t!=='Prompt')),'all'];
+ const bar=document.getElementById('types');
+ bar.innerHTML=types.map(t=>`<button class="chip${t===ty?' on':''}" data-t="${t}">${t==='all'?'全部':t==='Prompt'?'Prompt 卡':t} <small>${t==='all'?list.length:list.filter(c=>c.type===t).length}</small></button>`).join('');
+ bar.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;ty=b.dataset.t;bar.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));render()};
+ const h=decodeURIComponent(location.hash.slice(1));if(h.startsWith('q=')){q=h.slice(2).toLowerCase();document.getElementById('q').value=h.slice(2);ty='all';bar.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.t==='all'))}
+ render()});
+document.getElementById('q').oninput=e=>{q=e.target.value.trim().toLowerCase();render()};
+</script>
+</body>
+</html>

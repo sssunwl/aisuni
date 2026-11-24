@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>學習路線 8 格 · AISUN!</title>
+<meta name="description" content="給第一次接觸 AI 的人：8 格學會用 AI 建一套自己的 AI 系統，從為什麼、名詞、起手式到真的做出一個會自己做事的 Agent。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.map{position:sticky;top:66px;z-index:20;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px 0;margin-top:26px;background:linear-gradient(var(--bg) 70%,transparent)}
+.map a{width:46px;height:46px;display:grid;place-items:center;border:3px solid var(--ink);border-radius:12px;background:#fff;font-family:"Bangers";font-size:24px;box-shadow:3px 3px 0 var(--ink);transition:.2s cubic-bezier(.3,1.6,.5,1)}
+.map a:hover{transform:rotate(-8deg)}
+.map a.on,.map a[href="#s0"].on{background:var(--sun);transform:translateY(-3px)}
+.formula{margin:26px 0 0;font-weight:800;font-size:clamp(16px,2vw,20px);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.formula .fx{background:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:4px 14px;font-family:"Fredoka"}
+.formula .fa{background:var(--cor);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:4px 16px;font-family:"Bangers";font-size:1.3em;letter-spacing:.04em;box-shadow:3px 3px 0 var(--ink)}
+.lesson{margin-top:56px;scroll-margin-top:140px}
+.lhead{padding:30px 34px 28px 120px;min-height:150px}
+.lhead .num{position:absolute;left:26px;top:22px;font-family:"Bangers";font-size:96px;line-height:.9;color:#fff;-webkit-text-stroke:3px var(--ink);text-shadow:4px 4px 0 var(--ink)}
+.lhead h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;line-height:1.25;margin-top:10px}
+.lhead p{margin-top:8px;font-size:16px;max-width:760px}
+.lbody{margin-top:22px}
+.cgrid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.icard{background:#fff;border:2.5px solid var(--ink);border-radius:18px 18px 18px 4px;padding:16px 18px;transition:.25s cubic-bezier(.3,1.6,.5,1)}
+.icard:hover{transform:rotate(-1deg) translateY(-3px);box-shadow:4px 4px 0 var(--ink)}
+.icard .t2,.icard .t{all:unset;display:block;font-weight:800;font-size:17px;margin-bottom:4px}
+.icard .d{font-size:14.5px;color:#3d3952}
+.icard .ex{margin-top:8px;font-size:13px;color:var(--mu);background:var(--bg);border-radius:8px;padding:4px 8px}
+.icard .tag{margin:0 0 8px}
+.b-obsi{background:var(--lil)}.b-git{background:var(--mint)}.b-notion{background:var(--peach)}
+.steplist{display:grid;gap:12px}
+.cstep{display:flex;gap:16px;align-items:flex-start;background:#fff;border:2.5px solid var(--ink);border-radius:18px;padding:16px 18px}
+.cstep-num{flex:none;width:44px;height:44px;border:3px solid var(--ink);border-radius:12px;background:var(--sun);display:grid;place-items:center;font-family:"Bangers";font-size:24px}
+.cstep h4{font-size:17px;font-weight:800}
+.cstep .prompt{margin:8px 0}.cstep p{font-size:14.5px;color:#3d3952;margin-top:2px}
+.treebox{margin-top:16px;background:var(--ink);color:#e9e6f5;border:3px solid var(--ink);border-radius:22px 6px 22px 6px;padding:18px 20px;overflow-x:auto}
+.treebox pre{font-family:ui-monospace,Menlo,monospace;font-size:13.5px;line-height:1.75}
+.treebox .tf{color:var(--sun);font-weight:700}
+.treenote{font-size:13.5px;color:var(--mu);margin-top:8px}
+.keylesson{background:var(--cob);color:#fff;border:3px solid var(--ink);border-radius:44px 6px 44px 6px;padding:28px 30px;box-shadow:6px 6px 0 var(--ink)}
+.keylesson h4{font-size:clamp(20px,2.6vw,26px);font-weight:800;line-height:1.35;margin-bottom:10px}
+.keylesson p{margin-top:8px;font-size:15.5px}
+.keylesson b{background:var(--sun);color:var(--ink);padding:0 4px;border-radius:4px}
+.next{margin-top:60px;text-align:center}
+.next h3{font-size:24px;font-weight:800;margin-bottom:14px}
+.next .btn{margin:4px}
+@media(max-width:900px){.map{top:56px}.map a{width:36px;height:36px;font-size:19px}.lhead{padding:84px 22px 24px}.lhead .num{font-size:72px;left:20px;top:14px}.cstep{padding:14px}}
+</style>
+</head>
+<body data-root="../" data-page="learn">
+<div class="phead"><div class="t r-a rise" style="background:var(--mint);--sc:var(--lil)"><div class="burst"></div><span class="big" aria-hidden="true">8 STEPS</span><span class="lb">學習路線</span><h1>8 格，<br>從零到第一個作品</h1><p>給第一次接觸 AI 的新手：怎麼用 AI／Claude 幫自己建一套「<b>個人 AI 作業系統</b>」。重點不是把整套系統一次蓋出來，而是<b>把重複做的事固定成一套流程</b>，讓任何 AI 模型都能接手執行。往下讀是一條線：看懂全貌 → 為什麼這樣做 → 名詞速查 → 怎麼開始 → 逐層拆解 → 走一遍例子 → 東西放哪 → 常踩的坑 → 最重要的心態。</p></div></div>
+<main class="wrap">
+ <nav class="map" aria-label="學習路線目錄"><a href="#s0" title="第一次用 AI" style="background:var(--cor);color:#fff">0</a><a href="#s1" title="為什麼">1</a><a href="#s2" title="名詞速查">2</a><a href="#s3" title="怎麼開始">3</a><a href="#s4" title="六層架構">4</a><a href="#s5" title="走一遍">5</a><a href="#s6" title="東西放哪">6</a><a href="#s7" title="常踩的坑">7</a><a href="#s8" title="心態">8</a></nav>
+ <div class="formula"><span class="fx">Model</span> ＋ <span class="fx">Project</span> ＋ <span class="fx">Skills</span> ＋
+      <span class="fx">MCP</span> ＋ <span class="fx">Workflow</span> ＋ <span class="fx">Knowledge</span> ＝
+      <span class="fa">Agent</span></div>
+ <p class="note" style="text-align:center;margin-top:8px">六個零件湊齊，就得到一個能替你做事的 AI 員工（Agent）。下面每一格，都是在把這條公式講清楚。</p>
+ <section class="lesson" id="s0">
+ <div class="t lhead r-g rise" style="background:var(--cor);color:#fff;--sc:var(--sun)"><span class="num">0</span><span class="lb">第 0 格 · 第一次用 AI</span><h2>還沒真的用過 AI？從這裡開始</h2><p>不用先懂任何名詞。這一格只做三件事：挑一個 AI、學會怎麼問、花 5 分鐘做完一件真的用得到的事。</p></div>
+ <div class="lbody">
+  <div class="cgrid3">
+   <div class="icard"><div class="t2">① 挑一個就好</div><div class="d">ChatGPT、Claude、Gemini 都可以，免費版就夠用。不用比較哪個最強，先挑一個連續用一週，習慣了再試別的。</div><div class="ex">用手機 App 最方便，想到就問</div></div>
+   <div class="icard"><div class="t2">② 問法決定答案</div><div class="d">AI 不知道你是誰、要給誰看。只要多講四件事，答案就差很多：<b>我是誰、要做什麼、給誰看、要什麼樣子</b>。</div><div class="ex">不滿意就直接說「太長了」「語氣輕鬆一點」，不用重問</div></div>
+   <div class="icard"><div class="t2">③ 兩件事不要做</div><div class="d">不要貼密碼、身分證號碼、客人的個人資料。AI 會很有自信地講錯，數字、日期、法規這類事實，要自己再查一次。</div><div class="ex">AI 是很快的助手，不是標準答案</div></div>
+  </div>
+  <div class="sec" style="margin-top:30px"><h2 style="font-size:22px">同一件事，兩種問法</h2></div>
+  <div class="cgrid3">
+   <div class="icard" style="background:#fff"><div class="t2">✗ 一句話</div><div class="prompt">幫我寫請假訊息</div><div class="d">結果：很制式，你還要自己改半天。</div></div>
+   <div class="icard" style="background:var(--sun)"><div class="t2">✓ 多講四件事</div><div class="prompt">我是公司的設計師，下週三想請一天假帶小孩看醫生。幫我寫一則 WhatsApp 訊息給主管，語氣有禮貌但不要太正式，三句話以內，順便說明手上的稿會在週二前交。</div><div class="d">結果：幾乎可以直接傳出去。</div></div>
+  </div>
+  <div class="sec" style="margin-top:30px"><h2 style="font-size:22px">三個 5 分鐘任務，今天就做一個</h2><p>複製下面的指令，把〔〕裡的內容換成你自己的，貼進 AI。</p></div>
+  <div class="steplist">
+   <div class="cstep"><div class="cstep-num">A</div><div style="flex:1;min-width:0"><h4>改一則很難開口的訊息</h4><div class="prompt" id="z1">我要回覆〔對象，例如：客人／房東／朋友〕，內容是〔你想表達的事，可以很口語〕。幫我寫成一則訊息，語氣〔有禮貌但堅定／輕鬆〕，不超過 80 字。給我兩個版本讓我挑。</div><button class="btn sm" data-copy="z1">複製指令</button></div></div>
+   <div class="cstep"><div class="cstep-num">B</div><div style="flex:1;min-width:0"><h4>把一堆亂七八糟的筆記變清單</h4><div class="prompt" id="z2">下面是我隨手記的筆記，很亂沒關係。幫我整理成待辦清單：分成「這週要做」和「之後再說」，每項一句話，最重要的排最前面。看不懂的地方直接問我，不要自己亂猜。
+
+〔貼上你的筆記〕</div><button class="btn sm" data-copy="z2">複製指令</button></div></div>
+   <div class="cstep"><div class="cstep-num">C</div><div style="flex:1;min-width:0"><h4>規劃一個週末</h4><div class="prompt" id="z3">我住在〔城市〕，這個週末想和〔同行的人，例如：兩個小孩〕出去玩一天，預算大約〔金額〕，不想太累。幫我排一個從早到晚的行程，每個地點寫交通方式和大概時間。最後提醒我哪些資訊要自己再確認（例如開放時間）。</div><button class="btn sm" data-copy="z3">複製指令</button></div></div>
+  </div>
+  <div class="keylesson" style="margin-top:24px"><h4>做完一個，你就已經在用 AI 了</h4><p>接下來 8 格，是把「偶爾問一下」變成「一套每天幫你做事的系統」。如果現在只想多學幾個用法，先去看<a href="../tips/" style="text-decoration:underline">每天一招</a>和<a href="../prompts/" style="text-decoration:underline">Prompt 卡</a>也可以。</p></div>
+ </div>
+</section>
+<section class="lesson" id="s1">
+ <div class="t lhead r-a rise" style="background:var(--sun);--sc:var(--cob)"><span class="num">1</span><span class="lb">第 1 格 · 為什麼</span><h2>為什麼要這樣做：5 個核心理念</h2><p>先講心法。這五點是整套設計的地基，決定了你的東西日後換工具、換模型時不會全部重來。</p></div>
+ <div class="lbody"><div class="cgrid3">
+      <div class="icard"><div class="t2">知識可重複使用</div><div class="d">一次整理清楚，之後每次都能直接用，不用重新跟 AI 解釋一遍。</div></div>
+      <div class="icard"><div class="t2">能力要模組化</div><div class="d">把常做的事寫成一份 Skill／SOP，跨專案、跨 Agent 都能共用。</div></div>
+      <div class="icard"><div class="t2">Agent 可替換</div><div class="d">每個 AI 員工都能換掉重做，不影響底層的 Skill 與資料。</div></div>
+      <div class="icard"><div class="t2">Model 可互換</div><div class="d">不綁死單一家 AI，ChatGPT／Claude／Gemini 隨時可以換著用。</div></div>
+      <div class="icard"><div class="t2">資料歸自己所有</div><div class="d">重要知識放在自己掌控的地方（如 Obsidian／GitHub），不寄生在單一平台。</div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s2">
+ <div class="t lhead r-e rise" style="background:var(--mint);--sc:var(--lil)"><span class="num">2</span><span class="lb">第 2 格 · 名詞速查</span><h2>名詞速查：先搞懂這幾個詞</h2><p>整套系統會反覆出現這幾個詞。這裡一句話講清楚，後面看到就不卡。</p></div>
+ <div class="lbody"><div class="cgrid3">
+      <div class="icard"><div class="t2">Model 模型</div><div class="d">AI 的「大腦本體」，例如 Claude、ChatGPT。你所有指令最後都是這顆大腦在回應。</div></div>
+      <div class="icard"><div class="t2">Prompt 提示詞</div><div class="d">你對 AI 講的話／下的指令。同一顆大腦，Prompt 寫得好不好，結果差很多。</div></div>
+      <div class="icard"><div class="t2">Token 詞元</div><div class="d">AI 計算與收費的最小單位，約等於「幾個字」。對話太長會吃很多 Token，也是成本來源。</div></div>
+      <div class="icard"><div class="t2">Project 角色設定</div><div class="d">給 AI 的長期背景與人設，設定一次長期沿用，不用每次對話重講。</div></div>
+      <div class="icard"><div class="t2">Skill 能力模組</div><div class="d">把一件常做的事寫成固定 SOP，之後呼叫就能穩定重現，不用每次重教。</div></div>
+      <div class="icard"><div class="t2">MCP 工具接口</div><div class="d">讓 AI 能操作外部系統（Sheet、GitHub、Telegram）的標準接頭，從「會講」變「會做」。</div></div>
+      <div class="icard"><div class="t2">Workflow 流程</div><div class="d">把 Skill 和工具串成「觸發 → 執行 → 輸出」固定會跑的自動化流程。</div></div>
+      <div class="icard"><div class="t2">Agent 代理／員工</div><div class="d">以上全部湊齊、能在設定範圍內自己完成一件完整工作的 AI，就叫一個 Agent。</div></div>
+      <div class="icard"><div class="t2">API 應用接口</div><div class="d">系統之間互相呼叫的「櫃檯」。MCP 底層很多也是透過各家服務的 API 在運作。</div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s3">
+ <div class="t lhead r-c rise" style="background:var(--lil);--sc:var(--cor)"><span class="num">3</span><span class="lb">第 3 格 · 怎麼開始</span><h2>怎麼開始：新手 5 步驟</h2><p>理念懂了，這裡是最小可行的起手式。照順序做一輪，你就有了第一個會自己做事的 Agent——不用一次到位。</p></div>
+ <div class="lbody"><div class="steplist">
+      <div class="cstep"><div class="cstep-num">1</div><div><h4>選一個 Model 開始</h4><p>不用糾結選哪家，Claude 或 ChatGPT 都可以。先用起來、養成習慣，比選對工具更重要。</p></div></div>
+      <div class="cstep"><div class="cstep-num">2</div><div><h4>幫 AI 寫一個角色設定（Project）</h4><p>告訴它「你現在是誰、要做什麼、語氣怎樣」。這是長期背景，設定一次就不用每次對話重講。</p></div></div>
+      <div class="cstep"><div class="cstep-num">3</div><div><h4>把一件常做的事寫成 Skill</h4><p>例如「IG 貼文怎麼寫」「股票新聞怎麼整理」，寫成一份固定 SOP，之後每次呼叫都能重複使用。</p></div></div>
+      <div class="cstep"><div class="cstep-num">4</div><div><h4>接上一個工具（MCP）</h4><p>讓 AI 不只是聊天，而是真的能操作外部系統，例如 Google Sheet、Telegram、GitHub。</p></div></div>
+      <div class="cstep"><div class="cstep-num">5</div><div><h4>把以上串成 Workflow</h4><p>「觸發 → 執行 → 輸出」固定跑起來，這樣才算真正完成一個會自己做事的 Agent。</p></div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s4">
+ <div class="t lhead r-f rise" style="background:var(--peach);--sc:var(--cob)"><span class="num">4</span><span class="lb">第 4 格 · 六層架構</span><h2>逐層拆解：六層架構</h2><p>回到開頭那條公式，把六個零件一個一個攤開看——每一層是什麼、拿來幹嘛、長什麼樣。</p></div>
+ <div class="lbody"><div class="cgrid3">
+      <div class="icard"><div class="t2">🧠 Model 大腦</div><div class="d">目前在用的 AI 模型，隨時可替換。</div><div class="ex">例：ChatGPT・Claude・Gemini・Codex</div></div>
+      <div class="icard"><div class="t2">🎭 Project 角色設定</div><div class="d">給 AI 的長期人設與背景，設定一次、長期沿用。</div><div class="ex">例：品牌編輯・美股分析師</div></div>
+      <div class="icard"><div class="t2">🧩 Skills 可重用能力</div><div class="d">把重複性工作寫成固定 SOP，跨 Agent 共用。</div><div class="ex">例：IG 貼文・SEO 文章・股票新聞分析</div></div>
+      <div class="icard"><div class="t2">🔌 MCP 工具</div><div class="d">AI 真正能操作的外部系統，讓它從「會講」變「會做」。</div><div class="ex">例：Google Drive・GitHub・Telegram</div></div>
+      <div class="icard"><div class="t2">🔄 Workflow 自動化流程</div><div class="d">把 Skill 與 MCP 串成固定會跑的流程。</div><div class="ex">例：新聞來源 → AI 摘要 → 推送 Telegram</div></div>
+      <div class="icard"><div class="t2">🤖 Agent 自主員工</div><div class="d">具備以上全部，能在設定範圍內自己完成一件完整工作。</div><div class="ex">例：股票 Agent・客服 Agent</div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s5">
+ <div class="t lhead r-b rise" style="background:var(--sun);--sc:var(--cor)"><span class="num">5</span><span class="lb">第 5 格 · 走一遍</span><h2>走一遍：用一個例子把六層串起來</h2><p>光看架構還是抽象。這裡用一個誰都用得到的例子——「做一個每天早上幫你整理產業新聞的助手」——把公式六個零件實際填一次。這一段就是前面所有觀念的合體。</p></div>
+ <div class="lbody"><div class="steplist">
+      <div class="cstep"><div class="cstep-num">🧠</div><div><h4>Model：先挑大腦</h4><p>選 Claude 或 ChatGPT 其中一個。這個例子選 Claude，之後不滿意隨時可換，不影響底下的設定。</p></div></div>
+      <div class="cstep"><div class="cstep-num">🎭</div><div><h4>Project：給它角色</h4><p>設定「你是我的產業新聞助理，語氣精簡、只講重點、用繁體中文」。這段話存起來，每天都套用。</p></div></div>
+      <div class="cstep"><div class="cstep-num">🧩</div><div><h4>Skill：把篩選標準寫成 SOP</h4><p>寫一份「新聞怎麼挑、怎麼摘要」的規則：只留 5 則、每則兩句、附連結、標重要度。這就是可重用的能力。</p></div></div>
+      <div class="cstep"><div class="cstep-num">🔌</div><div><h4>MCP：接上來源與出口</h4><p>接上 RSS／新聞來源當「進料」，接上 Email 或 Telegram 當「出貨口」，讓 AI 真的拿得到新聞、也送得出去。</p></div></div>
+      <div class="cstep"><div class="cstep-num">🔄</div><div><h4>Workflow：串成每天自動跑</h4><p>設定「每天 07:00 觸發 → 抓新聞 → 套 Skill 摘要 → 寄到信箱」。到這裡，它已經會自己做事了。</p></div></div>
+      <div class="cstep"><div class="cstep-num">🤖</div><div><h4>Agent：這就是一個 Agent</h4><p>六個零件湊齊，你就有了一個「新聞助理 Agent」。哪天想換大腦、加一條篩選規則，改對應那一層就好，其他不動。</p></div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s6">
+ <div class="t lhead r-h rise" style="background:var(--mint);--sc:var(--cob)"><span class="num">6</span><span class="lb">第 6 格 · 東西放哪</span><h2>東西放哪：知識庫怎麼選</h2><p>Skill、知識、資料要有個家。三種工具各有分工，不是二選一，是搭配用。</p></div>
+ <div class="lbody"><div class="cgrid3">
+      <div class="icard"><span class="tag b-obsi">Obsidian</span><div class="d">第二大腦、Skill Library、SOP 文件。Markdown 本地保存，AI 好讀取，不綁定單一平台。</div></div>
+      <div class="icard"><span class="tag b-git">GitHub</span><div class="d">程式碼、自動化（GitHub Actions）、版本控制、網站部署。不適合放大量長篇知識筆記。</div></div>
+      <div class="icard"><span class="tag b-notion">Notion</span><div class="d">CRM、專案管理、待辦事項、團隊協作與資料庫。</div></div>
+    </div>
+    <div class="treebox"><pre><span class="tf">AI-OS/</span>
+├── <span class="tf">Agents/</span>      每個 AI 員工的人設與設定檔
+├── <span class="tf">Skills/</span>      可重複使用的 SOP／能力模組
+├── <span class="tf">MCP/</span>         工具串接說明（Drive・GitHub・Telegram…）
+├── <span class="tf">Workflow/</span>    自動化流程紀錄
+├── <span class="tf">Prompt/</span>      常用提示詞範本
+├── <span class="tf">Knowledge/</span>   領域知識庫（旅遊・股票・行銷…）
+├── <span class="tf">SOP/</span>         標準作業流程文件
+├── <span class="tf">Projects/</span>    各專案的背景與角色設定
+├── <span class="tf">Templates/</span>   內容範本（貼文・腳本・Email…）
+└── <span class="tf">Scratch/</span>     暫存草稿、還沒定案的實驗筆記</pre></div>
+    <div class="treenote">這是 Obsidian Vault 的建議起點——不用一次把資料夾生齊，用到再建，命名也可以照你原本習慣調整。</div></div>
+</section>
+<section class="lesson" id="s7">
+ <div class="t lhead r-e rise" style="background:var(--lil);--sc:var(--sun)"><span class="num">7</span><span class="lb">第 7 格 · 常踩的坑</span><h2>新手最常踩的 5 個坑</h2><p>這些不是進階問題，是幾乎每個人一開始都會犯、之後都會後悔的。先知道，就能繞過。</p></div>
+ <div class="lbody"><div class="cgrid3">
+      <div class="icard"><div class="t2">1 一開始就想蓋大系統</div><div class="d">先把組織圖、Registry 全設計出來，結果沒一個真的在跑。先做一個 Agent 到底，再談系統。</div></div>
+      <div class="icard"><div class="t2">2 知識只留在對話裡</div><div class="d">聊得很好，換新對話全部重來。有結論就落地成檔案，標準是「新對話讀了檔案就能接手」。</div></div>
+      <div class="icard"><div class="t2">3 綁死單一平台</div><div class="d">全部塞在某一家 AI 或某個 App，哪天要搬走拿不回來。重要資料放自己掌控的 Obsidian／GitHub。</div></div>
+      <div class="icard"><div class="t2">4 Skill 寫得太模糊</div><div class="d">「幫我寫貼文」每次結果都不一樣。SOP 要具體到格式、字數、語氣、範例，AI 才穩定。</div></div>
+      <div class="icard"><div class="t2">5 少了觸發機制</div><div class="d">做好了卻還要每天手動開，就不算自動化。一定要有 Workflow 的「觸發」那一步，它才會自己跑。</div></div>
+    </div></div>
+</section>
+<section class="lesson" id="s8">
+ <div class="t lhead r-a rise" style="background:var(--peach);--sc:var(--cor)"><span class="num">8</span><span class="lb">第 8 格 · 心態</span><h2>最重要的一課：心態</h2><p>上面五個坑裡最傷的是第一個，值得單獨講一次——它決定你這套系統是真的跑起來，還是停在紙上。</p></div>
+ <div class="lbody"><div class="keylesson">
+      <h4>先把一個 Agent 做到底，不要一開始就寫大架構</h4>
+      <p>很多人一開始就想把整套系統的組織圖、Registry、Knowledge Graph 都設計出來——但沒有真實案例撐著的架構文件，寫起來很有成就感，最後卻常常變成一份沒人真的照做的規劃書。</p>
+      <p>更好的做法：先挑一件你真的常做的事，把 Skill ＋ MCP ＋ Workflow 老老實實做出來、實際用過幾次，再回頭把重複出現的模式抽出來，變成可共用的機制。只有當同一個模式被<b>至少兩個</b>真實案例用到時，才值得把它做成正式的共用系統。</p>
+    </div></div>
+</section>
+ <div class="next"><h3>8 格走完了，接下來看真的做出來的東西</h3><a class="btn" href="../cases/">看真實案例 →</a><a class="btn" style="background:#fff" href="../tips/">每天一招 →</a></div>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+const links=[...document.querySelectorAll('.map a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('.lesson').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+[
+ {
+  "type": "Prompt",
+  "title": "照片變像素小模型（上下雙聯）",
+  "desc": "上半原照片，下半同一個場景變成方塊堆出來的迷你模型。提示詞是我們依靈感來源重寫的版本，效果圖用自己的素材實測，非原作者作品。",
+  "author": "靈感：cicichang.journal",
+  "url": "https://www.threads.com/share/BAa043WuC1/",
+  "img": "assets/prompts/voxel-diorama.jpg",
+  "prompt": "把附上的照片做成 3:4 直式雙聯圖,上下各半,中間不要分隔線。\n上半:原照片,不改內容。\n下半:同一個場景重新做成像素遊戲風的迷你模型。主體用立體方塊堆出來,顏色和形狀要認得出來;周圍簡化成柔和粉彩,邊緣慢慢散成小方塊。背景是素淨的奶油色,模型下方有一點柔和陰影,再放一行寬字距的大寫英文地名。\n不要數字、不要多餘文字、不要浮水印。"
+ },
+ {
+  "type": "Prompt",
+  "title": "照片變壓克力回憶地圖",
+  "desc": "從照片挑幾個記憶點，做成透明壓克力小收藏品，用虛線串成一張私人地圖。關鍵是不准用四宮格。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：lch1776244",
+  "url": "https://www.threads.com/share/BAACTHDBrj/",
+  "img": "assets/prompts/acrylic-memory-map.jpg",
+  "prompt": "把附上的照片做成 3:4 直式海報,上下各半。\n上半:原照片,只輕微調色,不改主體。\n下半:從照片挑 4 到 7 個最值得記住的小物件或細節,做成透明壓克力包邊的小收藏品,保留真實質感,不要卡通化。\n排版用斜向或 S 形動線,大小要有對比,不要四宮格。物件之間用細虛線和小箭頭連起來,像一張私人回憶地圖。留白要夠,色調柔和乾淨。"
+ },
+ {
+  "type": "Prompt",
+  "title": "雜誌感字體海報",
+  "desc": "讓巨型英文字和照片主體前後穿插，而不是貼在圖上。關鍵是把文字當畫面結構，不當裝飾。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：more.yu_",
+  "url": "https://www.threads.com/share/_mwt5GKtU/",
+  "img": "assets/prompts/type-poster.jpg",
+  "prompt": "把附上的照片做成 3:4 直式實驗字體海報。\n上半大面積留白,下半保留原照片和真實背景。\n依照片主題想一個簡短有力的英文標題,做成巨型字體,讓字和主體前後穿插:有些筆畫被主體擋住,有些繞到主體前面,不要平貼在照片上。\n只放一個標題,不要副標、邊框、裝飾和浮水印。"
+ },
+ {
+  "type": "Prompt",
+  "title": "照片變復古絲網印刷海報",
+  "desc": "上半是原片，下半把主體改成粗網點和套色印刷。重點是「不要描摹照片」，要轉成剪影和色塊，上下才有對比。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：收藏的街拍海報提示詞（來源未記錄）",
+  "img": "assets/prompts/retro-print.jpg",
+  "prompt": "把附上的照片做成 3:4 直式海報,上下各半,一張照片做一張。\n上半:保留原照片,主體不改,只做克制的底片調色和輕微顆粒。需要延展畫幅時自然補環境,不要拉伸主體。\n下半:取上方最有辨識度的輪廓、姿態或建築結構,重新做成復古絲網印刷:高反差剪影、粗網點半調、顆粒色塊、局部套色,兩到三色。不要精細寫實,但關鍵特徵要留住,讓上下一眼對應。"
+ },
+ {
+  "type": "Prompt",
+  "title": "照片變「實拍×抽象幾何」藝術海報",
+  "desc": "上半保留原照，下半把人物姿態和場景拆成色塊、圓弧和網格。重點是要抽象但一眼認得出原圖。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：mielm_ori",
+  "url": "https://www.threads.com/@mielm_ori/post/DfzFChgGIpo",
+  "img": "assets/prompts/geo-poster.jpg",
+  "prompt": "把附上的照片做成 3:4 直式藝術海報,上下各半。\n上半:原照片,人物五官、姿勢、構圖和光線都不改,只做細緻調色,像獨立刊物的攝影。\n下半:從照片抽出人物姿態、彼此的關係和場景輪廓,重畫成極簡幾何:色塊、圓弧、細線、網格和大量留白。不要直接描照片,但要一眼認得出是同一張。\n風格參考包浩斯和瑞士平面設計,配色從原照取主色,加暖白和低飽和色。加一點孔版印刷顆粒和紙紋,套色可以微微錯位。\n只用很小的編號、座標或色票當點綴,不要大標題,不要浮水印。"
+ },
+ {
+  "type": "Prompt",
+  "title": "照片變旅行紀念磁鐵海報",
+  "desc": "上半是一枚把照片場景做成微縮浮雕的紀念磁鐵，下面寫地名；下半原照滿版。適合旅遊品牌和送禮。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：ellain_tech",
+  "url": "https://www.threads.com/share/BASCntP0qO",
+  "img": "assets/prompts/travel-magnet.jpg",
+  "prompt": "把附上的照片做成 3:4 直式旅行紀念海報,上下各半。\n上半:用照片裡的低飽和色當霧面底色,中間放一枚小巧的手作紀念磁鐵,約占畫面寬度三分之一。把照片裡的人物、建築或風景做成霧面彩繪樹脂的微縮浮雕,只留一圈很細的仿古金邊,不要亮面反光和厚框。磁鐵下方用米白色細襯線字、寬字距寫〔地點〕,下一行小字寫〔國家或地區〕。字不要燙金、立體或加陰影。\n下半:原照片滿版到左右和底邊,不改風格、不拉伸,只做必要的最小裁切。\n整體像精品旅遊雜誌附贈的收藏品,留白充足,不要浮水印。"
+ },
+ {
+  "type": "Prompt",
+  "title": "照片變蠟筆粉彩舊書插畫",
+  "desc": "上半原照，下半同一個場景畫成手作感插畫：線條微歪、上色不均、紙底透白。關鍵是禁掉寫實、水彩、動漫和 3D。提示詞為重寫版，效果圖為自家實測。",
+  "author": "靈感：lch1776244",
+  "url": "https://www.threads.com/share/_9_VvwnGN",
+  "img": "assets/prompts/crayon-print.jpg",
+  "prompt": "把附上的照片做成上下對半的直式圖。\n上半:原照片,保留攝影質感,只做橫向自然裁切。\n下半:象牙白手工紙底,把照片場景畫成置中的橫向插畫,主體約占下半寬度六成,四周大量留白。去掉雜亂背景和次要細節,只留最有代表性的主體。\n畫法:稚拙的幾何色塊加細手繪線,輪廓微歪、偶爾斷開,不講究透視。從原照取 4 到 6 個顏色,低飽和平塗,不要漸層和重陰影。質感像蠟筆、粉彩加絲網印刷的舊書插圖:細顆粒、上色不均、邊緣磨損、套色輕微偏移。\n插畫下方左對齊放兩行小小的復古襯線英文;做不穩就留白,不要亂碼。\n不要寫實、水彩、動漫、向量、油畫、3D、logo、浮水印和黑邊。"
+ },
+ {
+  "type": "Prompt",
+  "title": "膠片感夕陽人像",
+  "desc": "一串關鍵詞直接堆出底片人像的氛圍：失焦、過曝、褪色、青橙配黑金。適合把自己的照片改成有現場感的風格照。原帖就是關鍵詞清單，這裡整理過順序。效果圖為自家實測。",
+  "author": "靈感：rung0103",
+  "url": "https://www.threads.com/share/_2gbRyYj3",
+  "img": "assets/prompts/film-portrait.jpg",
+  "prompt": "把附上的人像照片改成膠片攝影風格:\n抓拍感、對焦微微失準、透視視角;夕陽餘暉,風把長髮吹亂,有點凌亂但很有現場感。\n色調青橙加黑金,過曝、褪色、光線朦朧,暗部再壓深、亮部再提亮,帶一點 HDR。\n保留膠片顆粒和前衛藝術感,人物五官不要改。"
+ },
+ {
+  "type": "Prompt",
+  "title": "汽車雜誌封面",
+  "desc": "寫清楚鏡頭和快門，比寫「很有速度感」有用。效果圖用虛構的無品牌車款，提示詞為重寫版。",
+  "author": "靈感：IG 汽車廣告提示詞",
+  "url": "https://www.instagram.com/reel/DahQbhXzjL-/",
+  "img": "assets/prompts/car-cover.jpg",
+  "prompt": "〔車款〕行駛在陽光下的海岸公路,金色陽光照亮車身。\n高級汽車雜誌封面風,上方放大型英文字「〔車名或標題〕」,排版極簡。\n24-70mm F2.8 鏡頭,1/30 秒慢快門追焦,路面和背景有真實動態模糊,車身清楚。電影級寫實。畫面比例 9:16。"
+ },
+ {
+  "type": "Prompt",
+  "title": "四聯角色版：讓 AI 記住同一張臉",
+  "desc": "遠景人臉太小，模型只能自己猜，所以會變臉。把全身三視圖的頭去掉，逼它去參考正臉特寫。效果圖是虛構人物，提示詞為重寫版。",
+  "author": "靈感：AI 短劇教學圖（2026-10 收藏）",
+  "img": "assets/prompts/character-sheet.jpg",
+  "prompt": "做一張 16:9 角色設定板,純白背景,一字排開四格,大小一致。\n第 1 到 3 格:〔角色〕的全身正面、側面、背面,三格都不畫頭,衣領以上留白。\n第 4 格:完整頭部的正臉特寫。\n服裝、配件、膚色四格完全一致。不要文字、標註和浮水印。\n\n使用時:影片提示詞同時附這張圖,並用文字寫明髮型、服裝和配件。依劇本再多做受傷、換裝、不同表情的版本。"
+ },
+ {
+  "type": "Prompt",
+  "title": "場景九宮格：換鏡頭不穿幫",
+  "desc": "穿幫通常不是提示詞太短，是每一鏡都重新發明房間。先把同一空間的九個機位做出來，後面都引用它。效果圖是虛構場景，提示詞為重寫版。",
+  "author": "整理自 AI 短劇場景一致性教學",
+  "img": "assets/prompts/scene-grid.jpg",
+  "prompt": "做一張 1:1 九宮格,九格都是同一個〔場景〕,不同機位:全景、門口看向內部、反向、局部近景、俯視、低角度、左牆、右牆、重要道具特寫。\n九格的家具位置、門窗方向、色盤和光線必須完全一致。〔列出固定物件和光源方向〕。\n沒有人物,細白線分格,不要文字和浮水印。\n\n使用時:從中挑機位當參考圖,之後的提示詞只寫鏡頭和動作,不要重新描述整個房間。"
+ },
+ {
+  "type": "Prompt",
+  "title": "旅行 Reel 地圖飛行開場",
+  "desc": "給 Codex 或 Claude Code，用 Remotion 做一段航線開場。要先出預覽，再交影片。提示詞為重寫版。",
+  "author": "靈感：waltercheng.ai",
+  "url": "https://www.threads.com/share/BAESwkT0OD/",
+  "prompt": "用 Remotion 做一段 15 秒、9:16、無聲的旅行開場,從〔出發地〕飛到〔目的地〕。\n附上的人物插畫坐在小飛機裡。鏡頭從起點拉遠,跟著逐段畫出的航線移動,到終點推近,停 2 秒。\n用真實城市座標和免費地圖資料,城市名要清楚。不要做成截圖 slideshow。\n先給我預覽,確認後再交 MP4 和可編輯的工程檔。"
+ },
+ {
+  "type": "Prompt",
+  "title": "網址變 15 秒品牌動畫",
+  "desc": "關鍵是中間那一步：先交純文字分鏡等你確認，不要一口氣做完。提示詞為重寫版。",
+  "author": "靈感：ai.marketing.hk",
+  "url": "https://www.threads.com/share/BAYuDBbiHN/",
+  "prompt": "幫 〔網址〕 做一支 15 到 20 秒的 9:16 品牌動畫。\n第一步:讀網站,整理品牌色和主要賣點。\n第二步:給我純文字分鏡,等我確認,這一步不要開始做影片。\n第三步:確認後用 Remotion 或 HyperFrames 渲染成 MP4。\n只用網站上有的資訊,不要發明優惠或數字。避免泛用漸層和隨機粒子。"
+ },
+ {
+  "type": "Prompt",
+  "title": "日式「表／裏」液態擦除網頁",
+  "desc": "同一個人的兩張圖，滑鼠劃過像液體一樣擦出另一面，幾秒後流回去。prompt 分素材、風格、互動、配樂、錄影五段，這個結構可以套到任何互動網頁。提示詞為重寫版。",
+  "author": "靈感：pound0423",
+  "url": "https://www.threads.com/share/BApnkjU0tR",
+  "prompt": "【素材】兩張同一人、同姿勢、同構圖的圖:A 是平常版,B 是揭示版(例如〔加上刺青和鬼角〕)。先自動對齊兩張圖,再去背成透明圖。\n【風格】〔日式〕首頁,一個畫面完成,品牌名〔虛構一個〕。配色〔紙白底、墨黑字、朱紅點綴〕,字體用明體或古印刷體,搭直書短文和四角小註記。人物置中放大,背後兩排巨大的跑馬燈文字往相反方向跑,從人物後面穿過去。\n【互動】滑鼠劃過人物時,用液態、不規則的邊緣擦出 B,約 1 秒後自己流回去;滑鼠停住時留一小塊。加一顆「表/裏」切換鈕,整張由上往下流動切換。載入後自動示範劃一筆,手機可以用手指劃。做成單一 HTML,圖片內嵌。\n【配樂】用 Web Audio 即時合成〔箏、尺八、風聲〕,切到「裏」時加〔太鼓和低音〕。要有聲音開關,點了才播。\n【錄影】逐格輸出 MP4:16:9、1920×1080、30fps、約 10 秒含配樂。腳本:開場自動劃一筆 → 從臉擦到主視覺 → 切到「裏」停到結束。"
+ },
+ {
+  "type": "Prompt",
+  "title": "落地頁風格打樣模板",
+  "desc": "先定風格再談細節。把美學方向和字體寫死，AI 才不會每次都給同一種網站。十種方向列在提示詞裡，換一個就是新版本。提示詞為重寫版。",
+  "author": "靈感：ekcheung90 的 10 種風格整理",
+  "url": "https://www.heyommi.com/g/ekcheung90/prompt",
+  "prompt": "幫 〔產品〕 做一頁落地頁,對象是〔受眾〕,主要目標是〔目標〕。\n美學方向:〔選一個〕\n- 玻璃擬態:半透明面板、柔和模糊、細白邊\n- 新粗野主義:超大標題、粗黑框、硬陰影\n- 奢華雜誌:襯線大標、象牙與炭灰、大量留白\n- 蘋果式發表:黑底、緊湊大標、只用一個強調色\n- 便當格:暖白底、大小不一的功能卡\n- 復古未來:霓虹、金屬字、早期 3D\n- 日式極簡:克制、自然材質、留白有節奏\n- 暗色指揮中心:近黑底、等寬數字、狀態色\n- 自然雜誌:奶油底、森林綠、手作感\n- 數位工作室:作品就是介面、實驗性排版\n指定字體和顏色,全站統一。資料不足就標待補,不要編造數字。"
+ },
+ {
+  "type": "Prompt",
+  "title": "動畫要交代的五件事",
+  "desc": "「hover 時有翻轉效果」AI 只能猜。把這五格填完再送出，一次到位的機率高很多。",
+  "author": "靈感：ai_cpocoder",
+  "url": "https://www.threads.com/share/BAcqVnDfr_/",
+  "prompt": "幫〔元素〕做一個動畫:\n起點狀態:動之前長什麼樣。\n觸發:什麼時候開始。\n轉軸:繞哪裡轉、從哪裡長出來(transform-origin)。\n時長和收尾:幾秒,用 ease-out 或 spring 收。\n周邊元素:旁邊的東西要不要讓位。"
+ },
+ {
+  "type": "Prompt",
+  "title": "讓介面不像 AI 做的",
+  "desc": "一句話防止做成空表單。適合加在任何做 App 或網頁的提示詞後面。提示詞為重寫版。",
+  "author": "靈感：chloemakesdesign",
+  "url": "https://www.instagram.com/reel/DewQBRMgZYD/",
+  "prompt": "每個畫面都要有一個視覺重點,縮小看也要飽滿。\n用〔品牌色〕和附上的產品照,照片不要留灰框。\n做成可以點的:選項改變時,價格或結果要跟著變。"
+ },
+ {
+  "type": "Prompt",
+  "title": "一句話動畫：給舞台不給分鏡",
+  "desc": "不寫分鏡，只給目標和標準，適合找靈感。要做品牌片時還是要回到逐句分鏡。提示詞為重寫版。",
+  "author": "靈感：freedumx01",
+  "url": "https://www.instagram.com/reel/De9XG1PJ2fd/",
+  "prompt": "做一段 15 秒動畫,當作你展示動畫設計實力的作品集片段。全力以赴。"
+ },
+ {
+  "type": "Prompt",
+  "title": "AI 配樂六組（附拍攝建議）",
+  "desc": "音樂提示詞寫清楚秒數、BPM、樂器進場順序和收尾方式，比寫「輕鬆的音樂」有用。整理自 Gemini 的輸出。",
+  "author": "Gemini 輸出整理",
+  "prompt": "咖啡廳:60 秒,82 BPM。毛氈鋼琴加微弱黑膠雜音開場,15 秒帶入低音提琴和悶音吉他,鋼琴和弦淡出收尾。\n戶外咖啡廳:45 秒,112 BPM。烏克麗麗指彈開場,加刷擊小鼓和鐵琴,俐落刷弦收尾。\n商業理財:90 秒,120 BPM。極簡類比合成器加深沉低音和電子 Hi-hat,層次精準疊加,1 分 20 秒設循環點。\n旅行自然:75 秒,95 BPM。風聲腳步聲開場,加查蘭戈琴、尼龍吉他和柔和合成器,乾淨淡出。\n角色戲劇:120 秒,70 BPM。孤寂鋼琴獨奏,30 秒進空靈女聲哼唱,1 分 10 秒疊大提琴,長殘響收尾。\n懸疑:90 秒,80 BPM。低沉合成器持續音加斷奏小提琴和失真低音脈動,最高潮瞬間截斷。"
+ },
+ {
+  "type": "Skill",
+  "title": "Anthropic 官方 Skills 資源庫",
+  "desc": "官方開源的 Skills 集合：docx / pptx / xlsx / pdf 文件處理、skill-creator（做自己的 skill）等，裝進 Claude Code 就能用。想學「Skill 該怎麼寫」直接看官方原始碼最快。",
+  "author": "Anthropic",
+  "url": "https://github.com/anthropics/skills",
+  "prompt": ""
+ },
+ {
+  "type": "案例",
+  "title": "等時圈旅行時間地圖（Mollick 招牌測試）",
+  "desc": "讓 AI 自主派子代理查 2,200+ 航班與鐵路時刻，邊研究邊寫碼邊驗證，數小時交付互動地圖。是「交辦一整件事而不是一個指令」的代表案例。",
+  "author": "Ethan Mollick（One Useful Thing）",
+  "url": "https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mythos",
+  "prompt": "i want you to build a fully researched and beautiful isochronic map that lets me pick various cities and see real isochronic lines based on real data. I want the design to be unique. You should take into account airports (and travel time to and from airports) trains, walking, driving. The data does not need to be live but should be real based on your research and data. You can start with a few cities but more general is better, this should be an entirely new project."
+ },
+ {
+  "type": "案例",
+  "title": "機械錶模擬：視覺自我驗證迴圈",
+  "desc": "Three.js 做出真實齒輪比的機械錶。精髓在 prompt 設計：要求 AI 蓋一套相機系統、用視覺能力逐零件檢查、迴圈到 100% 滿意——「驗證迴圈」寫進 prompt 的範本。",
+  "author": "@quanghuynt14（X）",
+  "url": "https://x.com/quanghuynt14/status/2064509430650065278",
+  "prompt": "/goal Build the most realistic mechanical watch movement in Three.js — visible gears, escapement, balance wheel, all animated and mechanically coherent (gear ratios must actually make the hands tell real time). Build a camera system to inspect it from every angle and zoom level, use your vision capabilities to verify each part, and loop until you are 100% satisfied. Save a screenshot of every iteration to ./iterations/ so I can make a time-lapse."
+ },
+ {
+  "type": "案例",
+  "title": "McKinsey 等級報告複製",
+  "desc": "上傳一份顧問報告當品質基準，要求 AI 做出同等品質的新主題文件。發布日最瘋傳的案例之一，拿來升級自己的營運報告很實用。",
+  "author": "@rileybrown（X）",
+  "url": "https://x.com/rileybrown/status/2064407515752722521",
+  "prompt": "(附上一份高品質報告 PDF)\n\nCreate a brand-new document of the same quality on [你的主題]: same analytical depth, same chart quality, same layout polish and visual language. Research the topic properly before writing. Deliver as a polished HTML report I can print to PDF."
+ },
+ {
+  "type": "案例",
+  "title": "awesome-claude-fable-5 案例合集",
+  "desc": "GitHub 上持續更新的 Fable 5 案例、教學、整合與 benchmark 合集，附來源連結。找靈感的起點。",
+  "author": "Anil-matcha（GitHub）",
+  "url": "https://github.com/Anil-matcha/awesome-claude-fable-5",
+  "prompt": ""
+ },
+ {
+  "type": "教學",
+  "title": "Boris Cherny：每天在用的 15 個 Claude Code 功能",
+  "desc": "Claude Code 創始者親自示範日常工作流：排程自動化（Routines）、語音寫程式等。想知道「工具作者自己怎麼用」看這篇。",
+  "author": "INSIDE（中文報導）",
+  "url": "https://www.inside.com.tw/article/40974-claude-code-boris-cherny-hidden-features-voice-scheduling-workflow-2026",
+  "prompt": ""
+ },
+ {
+  "type": "教學",
+  "title": "Claude Code 官方提示詞資源庫",
+  "desc": "官方整理的五十多則指令範本，從規劃到自動化一頁涵蓋。寫 prompt 卡住的時候先來這裡抄。",
+  "author": "INSIDE（中文報導）",
+  "url": "https://www.inside.com.tw/article/41726-claude-code-prompt-library",
+  "prompt": ""
+ },
+ {
+  "type": "教學",
+  "title": "Claude Code 業務自動化 10 事例（日文）",
+  "desc": "議事錄自動化、週報製作等 10 個辦公自動化實例，附實作 prompt 全公開。非工程背景也能照做，跟 SolsLab 的自動化路線最對味。",
+  "author": "株式会社Uravation",
+  "url": "https://uravation.com/media/claude-code-automation-case-studies-2026/",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "ClaudeMarketplaces.com：最大社群目錄",
+  "desc": "Skill＋Plugin＋MCP 的社群目錄，每天從 GitHub 自動更新。找「有沒有人做過這個」先來這裡。",
+  "author": "社群維護",
+  "url": "https://claudemarketplaces.com/",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "aitmpl.com：數千個 agent / command / skill 索引",
+  "desc": "開源目錄 claude-code-templates 的網站版，附 CLI 一鍵安裝。量最大，適合挖冷門工具。",
+  "author": "davila7（GitHub）",
+  "url": "https://github.com/davila7/claude-code-templates",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "官方 Plugin Marketplace（/plugin）",
+  "desc": "Claude Code 裡直接打 /plugin 就能逛：官方 100+ 個，加上通過 Anthropic 安全審查的社群版。安全性最有保障的安裝來源。",
+  "author": "Anthropic",
+  "url": "https://code.claude.com/docs/en/discover-plugins",
+  "prompt": "/plugin"
+ },
+ {
+  "type": "來源",
+  "title": "awesome-claude-code：公認的正典精選清單",
+  "desc": "36.8k 星的手工精選：skills、subagents、開發工具、plugins。小技巧：網址加 /commits/main.atom 變 RSS，訂閱「清單本身的更新」。",
+  "author": "hesreallyhim（GitHub）",
+  "url": "https://github.com/hesreallyhim/awesome-claude-code",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "awesome-claude-skills：1000+ 實用 Skill 精選",
+  "desc": "ComposioHQ 維護的 Skill 專門清單，偏實戰可直接用的。",
+  "author": "ComposioHQ（GitHub）",
+  "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "awesome-agent-skills：跨工具通用 Skill 清單",
+  "desc": "1000+ 個官方與社群 skill，Claude Code / Codex / Cursor / Gemini CLI 都能用——工具換了收藏還在。",
+  "author": "VoltAgent（GitHub）",
+  "url": "https://github.com/VoltAgent/awesome-agent-skills",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "Reddit：r/ClaudeAI 與 r/ClaudeCode",
+  "desc": "每天都有實測貼文和第一手踩坑經驗，看「大家實際怎麼用、卡在哪」最即時的地方。",
+  "author": "Reddit 社群",
+  "url": "https://www.reddit.com/r/ClaudeAI/",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "Simon Willison 部落格",
+  "desc": "新模型、新工具發布當天就有可靠實測，判斷冷靜不吹捧。想快速知道「這個新東西值不值得看」就讀他。",
+  "author": "Simon Willison",
+  "url": "https://simonwillison.net/",
+  "prompt": ""
+ },
+ {
+  "type": "來源",
+  "title": "Lenny's Newsletter：50 個非工程師用法",
+  "desc": "從 500+ 人的分享整理出 50 個非技術背景的 Claude Code 應用——自動化文件、日誌分析等。找「不寫程式的人怎麼用」的代表作。",
+  "author": "Lenny's Newsletter",
+  "url": "https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code",
+  "prompt": ""
+ },
+ {
+  "type": "Agent",
+  "title": "驗證用子代理：讓別的 AI 檢查工作",
+  "desc": "長跑任務把「驗證」交給獨立的子代理，勝過讓 AI 自己檢查自己（self-critique）。一句 prompt 就能啟用的模式。",
+  "author": "官方 Prompting 指南歸納",
+  "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5",
+  "prompt": "Establish a method for checking your own work at an interval of [X] as you build. Run this every [X interval], verifying your work with subagents against the specification. Delegate independent subtasks to subagents and keep working while they run."
+ }
+]

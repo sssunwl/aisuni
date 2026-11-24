@@ -1,0 +1,153 @@
+[
+ {
+  "cat": "資訊整理",
+  "title": "手機連動 + Notion 資源整理系統",
+  "desc": "在手機上隨手丟連結（IG 貼文、文章、課程）給 Claude Code，AI 讀懂口語說明、整理成摘要寫進 Notion 資料庫，每週再一起 review 待整理項目。",
+  "project": "Notion 工具 + AINewsSuni repo",
+  "status": "完整教材",
+  "lessons": [
+   "手機連動的兩條路：Remote Control vs Claude Code on the Web 的差異與限制",
+   "訂閱方案取捨：個人 Pro vs Team，門檻與划算與否怎麼判斷",
+   "Notion vs Obsidian：依實際使用情境選，不是比功能表",
+   "資料庫欄位隨需求逐步擴充（IG → 課程/文章 → 驗證狀態），「一庫多檢視」vs「拆多表」的取捨",
+   "AI 讀不到 IG 內容是預期限制：狀態標「待整理」照樣入庫，不編造"
+  ],
+  "links": [],
+  "note": "完整過程記錄與資料庫在 Notion（私人頁面，未公開分享）",
+  "prompt": "（貼上連結）這個是講〔主題〕的，我覺得重點是〔你順口想到的點，很口語沒關係〕。幫我收進資源庫：讀懂我的說明整理成重點摘要，再試著讀連結內容補充細節；讀不到就老實標「待驗證」，狀態填「待整理」先入庫。"
+ },
+ {
+  "cat": "社群自動化",
+  "title": "Sona Sheet：多品牌社群貼文半自動化",
+  "desc": "OKIBLUES、The Blues、OKIPLAYGROUND 多個品牌帳號的貼文管理。AI 從本機憑證自動更新 Google Sheet、只填文案欄位；發佈版本的最終決定權留在人手上。",
+  "project": "SonaSNS-Platform",
+  "status": "營運中",
+  "lessons": [
+   "人機分工畫線：AI 填 IG/FB 文案和 Threads 文案，「發佈版本」欄位永遠由人決定",
+   "憑證放 ~/.config/sonasns/，絕不進 git——自動化方便，密鑰紀律不能鬆",
+   "「自動更新、無需下指令」的工作流怎麼設計：把規則寫成 AI 每次都會讀的檔案"
+  ],
+  "links": [],
+  "prompt": "你負責把生成的文案自動填進 Sheet 的「IG/FB文案」和「Threads文案」欄位，憑證從 ~/.config/ 讀取。「發佈版本」欄位永遠留給我填，就算你覺得哪個版本明顯比較好也不要動。"
+ },
+ {
+  "cat": "資料抓取",
+  "title": "AINewsSuni：每日 AI 新聞摘要機器人",
+  "desc": "每天自動抓 AI 新聞、整理成繁體中文摘要的排程機器人。同一個 repo 也兼作手機丟連結的快速收集入口——一個專案長出第二個用途的例子。",
+  "project": "AINewsSuni",
+  "status": "營運中",
+  "lessons": [
+   "排程自動化的基本盤：GitHub Actions / cron 跑每日任務",
+   "簡繁轉換的坑：機械轉換會出現同音異字亂碼，要讓 AI「真正讀懂後用繁體中文重寫」",
+   "一個 repo 可以承載多個角色，但要在 CLAUDE.md 裡寫清楚各角色的規則"
+  ],
+  "links": [],
+  "prompt": "輸出永遠用繁體中文，不管來源是簡中、英文還是日文：真正讀懂內容後用繁體中文重新寫一遍（像雙語使用者會做的事），不要用機械式簡繁轉換——那會產生同音異字的亂碼。不確定某個詞的繁體寫法，寧可換句話說。"
+ },
+ {
+  "cat": "商業營運",
+  "title": "Okiblues 租車：動態定價 + 自動化報表",
+  "desc": "幫沖繩租車業務加上動態定價邏輯與自動化報表，把重複的營運回報工作交給自動化，人專注在定價策略的判斷。",
+  "project": "Okiblues（客戶業務）",
+  "status": "營運中",
+  "lessons": [
+   "先確認哪些決策必須留在人手上（定價策略），再自動化其餘的重複工作（報表）",
+   "對外的商業數字要有查核點，不能讓自動化直接改對客戶的輸出"
+  ],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "資料抓取",
+  "title": "WeatherLab：天氣資料工具",
+  "desc": "天氣資料的抓取與整理實驗，服務沖繩在地的旅遊與潛水場景。",
+  "project": "weatherLab",
+  "status": "待寫教材",
+  "lessons": [],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "資料抓取",
+  "title": "FlightNews：航班資訊工具",
+  "desc": "航班資訊的抓取與整理，跟旅遊內容和家族旅行規劃的需求連動。",
+  "project": "FlightNews",
+  "status": "待寫教材",
+  "lessons": [],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "內容與知識",
+  "title": "InvestUni 投資學堂",
+  "desc": "投資學習平台實驗：把美港台股與加密貨幣的學習內容系統化。",
+  "project": "InvestUniS",
+  "status": "待寫教材",
+  "lessons": [],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "內容與知識",
+  "title": "MoralJury 道德陪審團短片",
+  "desc": "AI 生成內容實驗：道德兩難題材的短影音企劃與產製流程。",
+  "project": "MoralJury-Shorts",
+  "status": "待寫教材",
+  "lessons": [],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "內容與知識",
+  "title": "CapyChill：一支做完的長片躺了 44 天",
+  "desc": "Lo-fi 水豚陪伴電台。2026-07-25 凌晨導出一支 29 分 02 秒的成片，從沒上傳；同一天把「重複同一場景」的紀律改成「每天一個原創場景」，七天後專案停擺。做完的東西沒送出去，等於沒做。",
+  "project": "CapyChill",
+  "status": "完整教材",
+  "lessons": [
+   "瓶頸不在產能在發佈：素材、腳本、音樂都齊了，缺的是按下上傳",
+   "殺死專案的決定往往在成功的隔天做出來，不是在低潮時",
+   "同一專案兩份文件寫了相反紀律（不換房間 vs 每天新場景），後寫的贏了",
+   "囤積容易的那一半（18 支音樂、0 支動畫）是拖延的高級形式",
+   "六層裡 Workflow 只做了中段：組裝自動化了，進料和發佈都還靠人",
+   "在第一支片有數據之前，任何長期額度規劃都是規劃還沒被驗證的事"
+  ],
+  "links": [],
+  "note": "完整診斷見 cases/capychill-lofi-channel.md",
+  "prompt": ""
+ },
+ {
+  "cat": "資訊整理",
+  "title": "PersonalFootage：十年影像資產整理",
+  "desc": "十年份的個人影片與照片素材，跟 AI 一起建立整理系統，最終目標是留給家人的數位資產。",
+  "project": "PersonalFootage",
+  "status": "待寫教材",
+  "lessons": [],
+  "links": [],
+  "prompt": ""
+ },
+ {
+  "cat": "資料抓取",
+  "title": "SakiDiveDB → DiveInOut：雙 AI 自動囤庫做潛旅生活誌",
+  "desc": "Gemini 每週自動抓潛水情報囤成乾淨 MD 當「資料倉庫」，Claude 只讀庫回答與補深度內容當「顧問」；資料引擎 SakiDiveDB 餵養對外的 DiveInOut 潛旅生活誌（Leaflet 互動地圖 + 生物圖鑑）。一套可複製到任何範疇的「AI 自動建庫」模式。",
+  "project": "DiveInOut（引擎 SakiDiveDB）",
+  "status": "營運中",
+  "lessons": [
+   "雙 AI 分工「倉管 × 顧問」：Gemini 2.5 Flash 便宜、負責每週定時抓取囤資料，Claude 只讀乾淨的庫回答＝大幅省 token，也各自做最擅長的事",
+   "深度內容不能交給抓取用的 LLM：Gemini 只做情報彙整，會腦補的深度內容改由 Claude 每月排程查證後補，分開兩軌",
+   "macOS 保護目錄的坑：vault 在 ~/Downloads，launchd 自動寫會 Operation not permitted；解法是實體檔放非保護位置 + 在 vault 內建 symlink 指回去，Obsidian 照樣看得到",
+   "抓取防呆：用程式帶入的正確 URL 覆蓋 LLM 產出的來源連結（LLM 常抄錯網址編碼），時效資料一律標「⚠️需覆核」不腦補",
+   "資料層與呈現層分離：repo 的 main 是給自己看的原始 MD，GitHub Pages 是對外漂亮的公開版，同一份資料兩種面貌"
+  ],
+  "links": [
+   [
+    "DiveInOut 對外站",
+    "https://sssunwl.github.io/SakiDive/diveinout/"
+   ],
+   [
+    "SakiDive 內部儀表板",
+    "https://sssunwl.github.io/SakiDive/"
+   ]
+  ],
+  "prompt": "幫我建一個「AI 自動囤資料」的庫：用便宜的模型（Gemini）寫純 Python stdlib 腳本，每週 launchd 定時抓〔某範疇〕來源、摘要成乾淨 MD、自動 commit 推 GitHub，完全不動用 Claude token。每筆附來源＋抓取日期，時效性標「⚠️需覆核」，不確定就別寫。之後 Claude 只讀這個庫回答。注意 vault 在 ~/Downloads 受保護，實體檔要放非保護位置再用 symlink 接回來。"
+ }
+]

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>真實案例 · AISUN!</title>
+<meta name="description" content="不是範例，是真的做出來、還在跑的專案：每個案例都寫下學到什麼、踩過的坑，和可以直接複製的指令。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.cs .stat{font-size:12px;margin-left:0}
+.cs .st-完整教材{background:var(--mint)}.cs .st-營運中{background:var(--sun)}.cs .st-待寫教材{background:#fff;border-style:dashed}
+.cs .cat{font-size:12px}
+.cs.hl{outline:4px solid var(--cor);outline-offset:4px}
+</style>
+</head>
+<body data-root="../" data-page="cases">
+<div class="phead"><div class="t r-f rise dots" style="background:var(--peach);--sc:var(--cor)"><div class="burst"></div><span class="big" aria-hidden="true">REAL!</span><span class="lb">真實案例</span><h1>不是範例，<br>是真的做出來的東西</h1><p>每一個都是實際做過、很多還在每天跑的專案。寫下學到什麼、踩過什麼坑，能分享的指令也一起附上。</p></div></div>
+<main class="wrap">
+ <div class="fbar" id="cats"></div>
+ <div class="fbar" style="margin-top:-6px" id="stats"></div>
+ <div class="fbar" style="margin-top:-6px"><input class="search" id="q" type="search" placeholder="搜尋案例、專案、關鍵字…" aria-label="搜尋"></div>
+ <div class="cards" id="list"></div><div class="empty" id="empty">沒有符合的案例</div>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+const BG=['var(--sun)','var(--mint)','var(--lil)','var(--peach)','#fff'],SC=['var(--cob)','var(--lil)','var(--cor)','var(--cob)','var(--cor)'],RD=['r-a','r-e','r-c','r-f','r-b','r-h','r-d'];
+const E=AISUN.esc;
+let ALL=[],cat='all',st='all',q='';
+function linkify(s){return E(s).replace(/cases\/([\w-]+)\.md/g,'<a href="$1.html" target="_blank">完整筆記</a>')}
+function render(){
+ const L=ALL.filter(c=>(cat==='all'||c.cat===cat)&&(st==='all'||c.status===st)&&(!q||(c.title+c.desc+c.cat+c.project+(c.lessons||[]).join(' ')).toLowerCase().includes(q)));
+ document.getElementById('list').innerHTML=L.map((c,i)=>{const id=ALL.indexOf(c);const has=(c.lessons||[]).length||c.prompt||c.note;
+ return`<article class="t card cs ${RD[i%7]} rise" id="c${id}" style="background:${BG[i%5]};--sc:${SC[i%5]}">
+  <span class="lb cat">${E(c.cat)}</span> <span class="tag stat st-${E(c.status)}">${E(c.status)}</span>
+  <h3>${E(c.title)}</h3><p class="d">${E(c.desc)}</p><p class="m">專案：${E(c.project)}</p>
+  ${has?`<button class="more">學到什麼 ▾</button><div class="detail">
+   ${(c.lessons||[]).length?`<ul>${c.lessons.map(l=>`<li>${E(l)}</li>`).join('')}</ul>`:''}
+   ${(c.links||[]).map(([t,u])=>`<p class="m"><a href="${E(u)}" target="_blank" rel="noopener">${E(t)}</a></p>`).join('')}
+   ${c.note?`<p class="m">${linkify(c.note)}</p>`:''}
+   ${c.prompt?`<div class="prompt" id="cp${id}">${E(c.prompt)}</div><button class="btn sm" data-copy="cp${id}">複製指令</button>`:''}
+  </div>`:''}
+ </article>`}).join('');
+ document.getElementById('empty').style.display=L.length?'none':'block';
+ AISUN.rise();
+}
+function chips(el,vals,cur,label,set){el.innerHTML=vals.map(v=>`<button class="chip${v===cur?' on':''}" data-v="${E(v)}">${v==='all'?label:E(v)}</button>`).join('');
+ el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;set(b.dataset.v);el.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));render()}}
+document.addEventListener('click',e=>{const b=e.target.closest('.more');if(b){const c=b.closest('.card');c.classList.toggle('open');b.textContent=c.classList.contains('open')?'收起 ▴':'學到什麼 ▾'}});
+fetch('../data/cases.json').then(r=>r.json()).then(list=>{ALL=list;
+ chips(document.getElementById('cats'),['all',...new Set(list.map(c=>c.cat))],'全部分類',v=>cat=v);
+ chips(document.getElementById('stats'),['all','完整教材','營運中','待寫教材'],'全部狀態',v=>st=v);
+ const h=decodeURIComponent(location.hash.slice(1));
+ if(h.startsWith('q=')){q=h.slice(2).toLowerCase();document.getElementById('q').value=h.slice(2)}
+ render();
+ if(h&&!h.startsWith('q=')){const i=ALL.findIndex(c=>c.title===h);const el=document.getElementById('c'+i);if(el){el.classList.add('open','hl','in');const m=el.querySelector('.more');m&&(m.textContent='收起 ▴');setTimeout(()=>el.scrollIntoView({block:'center'}),100)}}
+});
+document.getElementById('q').oninput=e=>{q=e.target.value.trim().toLowerCase();render()};
+</script>
+</body>
+</html>

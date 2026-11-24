@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每天一招 · AISUN!</title>
+<meta name="description" content="一次一招，跟 AI 協作的工作規則：每一招都有踩過的坑和可以直接複製的指令。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:30px}
+.tip{display:flex;flex-direction:column}
+.tip .no{font-family:"Bangers";font-size:54px;line-height:.85;color:#fff;-webkit-text-stroke:2.5px var(--ink);text-shadow:3px 3px 0 var(--ink);margin-top:6px}
+.tip h3{font-size:21px;font-weight:800;line-height:1.35;margin:8px 0 10px}
+.tip .pt{font-size:14.5px;margin-top:6px}
+.tip .pt b{display:inline-block;font-size:12px;border:2px solid var(--ink);border-radius:8px;padding:0 7px;margin-right:6px;background:#fff}
+.tip .pt.trap b{background:var(--cor);color:#fff}
+.tip .prompt{background:#fff}
+.tip .row{display:flex;align-items:center;gap:10px;margin-top:auto;flex-wrap:wrap}
+.tip .vbadge{font-size:12px;font-weight:800;border:2px dashed var(--ink);border-radius:999px;padding:3px 10px;background:rgba(255,255,255,.6)}
+.tip .case{font-size:13.5px;margin-top:10px}
+.tip .case a{text-decoration:underline;font-weight:700}
+</style>
+</head>
+<body data-root="../" data-page="tips">
+<div class="phead"><div class="t r-c rise dots" style="background:var(--lil);--sc:var(--mint)"><div class="burst"></div><span class="big" aria-hidden="true">60 SEC</span><span class="lb">▶ 每天一招</span><h1>每天一招，<br>短片學會</h1><p>不是書上抄來的原則，是在真實專案裡跟 AI 磨出來的工作規則，每一招後面都有踩過的坑。指令可以直接複製，貼進你自己的 AI 設定（CLAUDE.md、自訂指示、系統提示詞都行）。</p></div></div>
+<main class="wrap"><div class="tips" id="tips"></div></main>
+<script src="../assets/site.js"></script>
+<script>
+const BG=['var(--sun)','var(--mint)','var(--lil)','var(--peach)','#fff'],SC=['var(--cob)','var(--lil)','var(--cor)','var(--cob)','var(--cor)'],RD=['r-a','r-e','r-c','r-f','r-b','r-h','r-d'];
+const E=AISUN.esc;
+fetch('../data/tips.json').then(r=>r.json()).then(list=>{
+ document.getElementById('tips').innerHTML=list.map((x,i)=>`<article class="t tip ${RD[i%7]} rise" id="tip${x.n}" style="background:${BG[i%5]};--sc:${SC[i%5]}">
+  <span class="no">#${String(x.n).padStart(2,'0')}</span><h3>${E(x.title)}</h3>
+  ${(x.points||[]).map(p=>`<p class="pt ${p.kind}"><b>${E(p.label)}</b>${E(p.text)}</p>`).join('')}
+  <div class="prompt" id="tp${x.n}">${E(x.prompt)}</div>
+  <div class="row"><button class="btn sm" data-copy="tp${x.n}">複製指令</button>${x.video?`<a class="btn sm" style="background:#fff" href="${E(x.video)}" target="_blank" rel="noopener">▶ 看短片</a>`:`<span class="vbadge">短片準備中</span>`}</div>
+  ${x.case?`<p class="case">${x.case}</p>`:''}
+ </article>`).join('');
+ AISUN.rise();
+ if(location.hash){const el=document.querySelector(location.hash);el&&el.scrollIntoView()}
+});
+</script>
+</body>
+</html>

@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
-.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:30px}
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:10px}
+.tip .ser{font-size:12px;margin-left:6px}
 .tip{display:flex;flex-direction:column}
 .tip .no{font-family:"Bangers";font-size:54px;line-height:.85;color:#fff;-webkit-text-stroke:2.5px var(--ink);text-shadow:3px 3px 0 var(--ink);margin-top:6px}
 .tip h3{font-size:21px;font-weight:800;line-height:1.35;margin:8px 0 10px}
@@ -25,21 +26,26 @@
 </head>
 <body data-root="../" data-page="tips">
 <div class="phead"><div class="t r-c rise dots" style="background:var(--lil);--sc:var(--mint)"><div class="burst"></div><span class="big" aria-hidden="true">60 SEC</span><span class="lb">▶ 每天一招</span><h1>每天一招，<br>短片學會</h1><p>不是書上抄來的原則，是在真實專案裡跟 AI 磨出來的工作規則，每一招後面都有踩過的坑。指令可以直接複製，貼進你自己的 AI 設定（CLAUDE.md、自訂指示、系統提示詞都行）。</p></div></div>
-<main class="wrap"><div class="tips" id="tips"></div></main>
+<main class="wrap"><div class="fbar" id="ser"></div><div class="tips" id="tips"></div></main>
 <script src="../assets/site.js"></script>
 <script>
 const BG=['var(--sun)','var(--mint)','var(--lil)','var(--peach)','#fff'],SC=['var(--cob)','var(--lil)','var(--cor)','var(--cob)','var(--cor)'],RD=['r-a','r-e','r-c','r-f','r-b','r-h','r-d'];
 const E=AISUN.esc;
-fetch('../data/tips.json').then(r=>r.json()).then(list=>{
- document.getElementById('tips').innerHTML=list.map((x,i)=>`<article class="t tip ${RD[i%7]} rise" id="tip${x.n}" style="background:${BG[i%5]};--sc:${SC[i%5]}">
-  <span class="no">#${String(x.n).padStart(2,'0')}</span><h3>${E(x.title)}</h3>
+let ALL=[],ser=location.hash==='#token'?'省 Token':'all';
+function render(){const L=ALL.filter(x=>ser==='all'||x.series===ser);
+ document.getElementById('tips').innerHTML=L.map((x,i)=>`<article class="t tip ${RD[i%7]} rise" id="tip${x.n}" style="background:${BG[i%5]};--sc:${SC[i%5]}">
+  <div><span class="no">#${String(x.n).padStart(2,'0')}</span><span class="tag ser">${E(x.series||'')}</span></div><h3>${E(x.title)}</h3>
   ${(x.points||[]).map(p=>`<p class="pt ${p.kind}"><b>${E(p.label)}</b>${E(p.text)}</p>`).join('')}
   <div class="prompt" id="tp${x.n}">${E(x.prompt)}</div>
   <div class="row"><button class="btn sm" data-copy="tp${x.n}">複製指令</button>${x.video?`<a class="btn sm" style="background:#fff" href="${E(x.video)}" target="_blank" rel="noopener">▶ 看短片</a>`:`<span class="vbadge">短片準備中</span>`}</div>
   ${x.case?`<p class="case">${x.case}</p>`:''}
- </article>`).join('');
- AISUN.rise();
- if(location.hash){const el=document.querySelector(location.hash);el&&el.scrollIntoView()}
+ </article>`).join('');AISUN.rise()}
+fetch('../data/tips.json').then(r=>r.json()).then(list=>{ALL=list;
+ const el=document.getElementById('ser'),ss=['all',...new Set(list.map(x=>x.series))];
+ el.innerHTML=ss.map(v=>`<button class="chip${v===ser?' on':''}" data-v="${E(v)}">${v==='all'?'全部 '+list.length:E(v)+' '+list.filter(x=>x.series===v).length}</button>`).join('');
+ el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;ser=b.dataset.v;el.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));render()};
+ render();
+ if(/^#tip\d+$/.test(location.hash)){const el2=document.querySelector(location.hash);el2&&el2.scrollIntoView()}
 });
 </script>
 </body>

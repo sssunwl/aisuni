@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 工具地圖 · AISUN!</title>
+<meta name="description" content="按用途分類的 AI 工具地圖：聊天、寫程式、Skill、圖片、影片、剪輯、聲音、建站、自動化。標出最新收錄、我們實際在用、開源授權。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13.5px;color:var(--mu);margin-top:6px}
+.badge{display:inline-block;font-size:11.5px;font-weight:800;border:2px solid var(--ink);border-radius:999px;padding:0 8px;line-height:1.6;color:var(--ink)}
+.badge.new{background:var(--cor);color:#fff}.badge.use{background:var(--sun)}.badge.open{background:var(--mint)}.badge.star{background:#fff}
+.fbar .sort{margin-left:auto;display:flex;gap:6px}
+.catsec{margin-top:40px;scroll-margin-top:80px}
+.cathead{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.cathead h2{font-size:clamp(22px,2.8vw,28px);font-weight:800}
+.cathead .cnt{font-family:"Bangers";font-size:34px;line-height:.85;color:var(--cob);-webkit-text-stroke:1.5px var(--ink)}
+.cathead p{flex-basis:100%;color:var(--mu);font-size:14.5px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.tool{display:flex;flex-direction:column;gap:6px;padding:18px 18px 16px;--rad:20px}
+.tool h3{font-size:18px;font-weight:800;line-height:1.3}
+.tool .bs{display:flex;flex-wrap:wrap;gap:5px}
+.tool .d{font-size:14px;flex:1}
+.tool .nt{font-size:12.5px;background:#f4f1ec;border-radius:10px;padding:6px 9px;color:#4a4560}
+.tool .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--mu);margin-top:4px}
+.tool .ft a{font-weight:800;color:var(--ink);border-bottom:2px solid var(--ink)}
+.tool.is-new{background:#fffaf0}
+.hilite{background:var(--sun);--sc:var(--cor);margin-top:30px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;align-items:center}
+.hilite .bang{font-size:48px;line-height:.9;color:#fff;-webkit-text-stroke:2.5px var(--ink);text-shadow:4px 4px 0 var(--ink)}
+.hilite ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.hilite li a{display:inline-block;background:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:800;transition:.2s}
+.hilite li a:hover{transform:rotate(-3deg)}
+@media(max-width:700px){.hilite{grid-template-columns:1fr}.fbar .sort{margin-left:0}}
+</style>
+</head>
+<body data-root="../" data-page="tools">
+<div class="phead"><div class="t r-h rise dots" style="background:var(--cob);color:#fff;--sc:var(--sun)"><div class="burst"></div><span class="big" aria-hidden="true">AI DEX</span><span class="lb">🧰 工具地圖</span><h1>按用途找<br>AI 工具</h1><p>不是排行榜，是我們用過、試過、或認真查過的工具。每一個都寫清楚它做什麼、要不要錢、有什麼要注意。星數和授權是自己打開 repo 查的，沒查的就不寫。</p></div></div>
+<main class="wrap">
+  <section class="t hilite r-e rise" aria-label="最近收錄"><div><span class="bang">NEW!</span><p style="font-weight:800;margin-top:8px">最近 30 天收錄</p></div><ul id="newest"></ul></section>
+  <div class="fbar" id="cats"></div>
+  <div class="fbar" style="margin-top:-6px">
+    <input class="search" id="q" type="search" placeholder="搜尋：剪片、免費、Claude……" aria-label="搜尋工具">
+    <div class="sort"><button class="chip on" data-f="all">全部</button><button class="chip" data-f="use">我們在用</button><button class="chip" data-f="open">開源</button></div>
+  </div>
+  <div class="legend"><span><span class="badge new">新</span> 30 天內收錄</span><span><span class="badge use">在用</span> 我們實際在用</span><span><span class="badge open">開源</span> 可以看原始碼</span><span id="upd"></span></div>
+  <div id="list"></div>
+  <p class="empty" id="empty">找不到，換個關鍵字試試。</p>
+  <p class="note" style="margin-top:30px">不知道該用哪一級的工具？先看 <a href="../guide/#build" style="text-decoration:underline">AI 基本功：Prompt、Skill、Agent 什麼時候用哪個</a>。</p>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+const E=AISUN.esc,BG=['#fff','var(--peach)','var(--mint)','#fff','var(--lil)','#fff'],SC=['var(--sun)','var(--cob)','var(--lil)','var(--cor)','var(--mint)','var(--cob)'];
+let D={cats:[],tools:[]},cat=(location.hash||'').slice(1)||'all',flt='all',q='';
+const isNew=(t,ref)=>t.added&&(ref-new Date(t.added))/864e5<=30;
+function card(t,i,ref){
+ const n=isNew(t,ref);
+ return `<article class="t tool rise${n?' is-new':''}" style="background:${n?'':BG[i%6]};--sc:${SC[i%6]}">
+  <div class="bs">${n?'<span class="badge new">新</span>':''}${t.use?'<span class="badge use">在用</span>':''}${t.open?'<span class="badge open">開源</span>':''}${t.stars?`<span class="badge star">★ ${E(t.stars)}</span>`:''}</div>
+  <h3>${E(t.name)}</h3><p class="d">${E(t.desc)}</p>
+  ${t.note?`<p class="nt">⚠ ${E(t.note)}</p>`:''}
+  <div class="ft"><span>${E(t.price||'')}</span><a href="${E(t.url)}" target="_blank" rel="noopener">打開 ↗</a></div></article>`}
+function render(){
+ const ref=new Date(D.updated||Date.now()),kw=q.trim().toLowerCase();
+ const ok=t=>(flt==='all'||t[flt])&&(!kw||[t.name,t.desc,t.note,t.price].join(' ').toLowerCase().includes(kw));
+ let html='',total=0;
+ D.cats.filter(c=>cat==='all'||c.k===cat).forEach(c=>{
+  const L=D.tools.filter(t=>t.cat===c.k&&ok(t)).sort((a,b)=>(b.use?1:0)-(a.use?1:0)||String(b.added).localeCompare(String(a.added)));
+  if(!L.length)return;total+=L.length;
+  html+=`<section class="catsec" id="${c.k}"><div class="cathead"><span class="cnt">${L.length}</span><h2>${E(c.t)}</h2><p>${E(c.d)}</p></div><div class="tgrid">${L.map((t,i)=>card(t,i,ref)).join('')}</div></section>`});
+ document.getElementById('list').innerHTML=html;
+ document.getElementById('empty').style.display=total?'none':'block';
+ AISUN.rise()}
+fetch('../data/tools.json').then(r=>r.json()).then(d=>{D=d;
+ const ref=new Date(d.updated);
+ document.getElementById('upd').textContent='更新：'+d.updated+'・共 '+d.tools.length+' 個';
+ document.getElementById('newest').innerHTML=d.tools.filter(t=>isNew(t,ref)).sort((a,b)=>b.added.localeCompare(a.added)).map(t=>`<li><a href="${E(t.url)}" target="_blank" rel="noopener">${E(t.name)}</a></li>`).join('');
+ if(cat!=='all'&&!d.cats.some(c=>c.k===cat))cat='all';
+ const el=document.getElementById('cats');
+ el.innerHTML=[{k:'all',t:'全部'},...d.cats].map(c=>`<button class="chip${c.k===cat?' on':''}" data-v="${c.k}">${E(c.t)} ${c.k==='all'?d.tools.length:d.tools.filter(t=>t.cat===c.k).length}</button>`).join('');
+ el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.v;el.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));history.replaceState(null,'',cat==='all'?location.pathname:'#'+cat);render()};
+ render()});
+document.querySelector('.sort').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;flt=b.dataset.f;document.querySelectorAll('.sort .chip').forEach(x=>x.classList.toggle('on',x===b));render()};
+document.getElementById('q').oninput=e=>{q=e.target.value;render()};
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 基本功 · AISUN!</title>
+<meta name="description" content="Prompt、Skill、Agent 什麼時候用哪個；怎樣跟 AI 講話它才聽得懂；AI 越來越強，人要留住什麼。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;600;800&family=Fredoka:wght@500;600;700&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.toc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px}
+.toc a{display:flex;flex-direction:column;gap:6px;min-height:150px}
+.toc .n{font-family:"Bangers";font-size:52px;line-height:.85;color:#fff;-webkit-text-stroke:2.5px var(--ink);text-shadow:3px 3px 0 var(--ink)}
+.toc b{font-size:19px;line-height:1.35}
+.toc span.d{font-size:14px;opacity:.8}
+.ch{scroll-margin-top:80px}
+.ch-head{margin:70px 0 18px;display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
+.ch-head .n{font-family:"Bangers";font-size:clamp(70px,9vw,110px);line-height:.8;color:var(--sun);-webkit-text-stroke:3px var(--ink);text-shadow:5px 5px 0 var(--ink)}
+.ch-head h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.2}
+.ch-head p{flex-basis:100%;color:var(--mu);font-size:15.5px;max-width:760px}
+/* 樓梯 */
+.ladder{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:center;padding:18px 22px}
+.step .lv{font-family:"Bangers";font-size:44px;line-height:1;text-align:center}
+.step .lv small{display:block;font-family:"Fredoka";font-size:12px;font-weight:600;letter-spacing:.05em}
+.step h3{font-size:20px;font-weight:800;line-height:1.3}
+.step h3 em{font-style:normal;font-size:13px;font-weight:800;background:#fff;border:2px solid var(--ink);border-radius:8px;padding:0 7px;margin-left:6px;vertical-align:3px}
+.step .when{font-size:14px;margin-top:4px}
+.step .eg{font-size:13.5px;background:rgba(255,255,255,.75);border:2px dashed var(--ink);border-radius:12px;padding:10px 12px}
+.step .eg b{display:block;font-size:12px;margin-bottom:2px}
+.rule3{margin-top:26px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.rule3 div{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:14px;box-shadow:4px 4px 0 var(--ink);font-size:14px}
+.rule3 div b{display:block;font-size:16px;margin-bottom:4px}
+.check{margin-top:26px;background:var(--ink);color:#fff;--sc:var(--sun)}
+.check h3{font-size:20px;font-weight:800}
+.check ol{margin-top:10px;padding-left:20px;display:grid;gap:8px;font-size:14.5px}
+.check ol b{color:var(--sun)}
+/* 4D */
+.fourd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:28px}
+.fourd div{border:3px solid var(--ink);border-radius:18px;padding:14px 16px;box-shadow:4px 4px 0 var(--ink)}
+.fourd .d{font-family:"Bangers";font-size:30px;line-height:1}
+.fourd b{display:block;font-size:16px;margin:4px 0}
+.fourd p{font-size:13.5px}
+/* 溝通招式 */
+.moves{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.move{display:flex;flex-direction:column;gap:8px}
+.move .no{font-family:"Bangers";font-size:40px;line-height:.85;color:var(--cor);-webkit-text-stroke:1.5px var(--ink)}
+.move h3{font-size:20px;font-weight:800;line-height:1.35}
+.move .why{font-size:14px;color:#3d3952}
+.say{border:2.5px solid var(--ink);border-radius:16px;padding:10px 12px;font-size:13.5px;line-height:1.65;position:relative}
+.say i{font-style:normal;font-weight:800;font-size:12px;display:inline-block;border:2px solid var(--ink);border-radius:7px;padding:0 7px;margin-right:6px}
+.say.bad{background:#f4f1ec;color:#5a5568}.say.bad i{background:var(--cor);color:#fff}
+.say.good{background:#fff;white-space:pre-wrap}.say.good i{background:var(--mint)}
+.move .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto}
+.move .src{font-size:12.5px;color:var(--mu)}
+.move .src a{text-decoration:underline}
+/* 人類章 */
+.essay{background:#fff;--sc:var(--lil);padding:34px 38px;font-size:17px;line-height:1.9}
+.essay p+p{margin-top:14px}
+.essay .big{font-size:clamp(22px,2.8vw,30px);font-weight:800;line-height:1.45}
+.essay mark{background:var(--sun);padding:0 4px;border-radius:4px;color:inherit}
+.keep{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:30px}
+.keep article h3{font-size:20px;font-weight:800;line-height:1.35;margin:8px 0}
+.keep article p{font-size:14.5px}
+.keep article .ai{margin-top:10px;font-size:13.5px;background:rgba(255,255,255,.7);border:2px dashed var(--ink);border-radius:12px;padding:8px 12px}
+.keep article .ai b{font-size:12px;display:block}
+.vs{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);background:#fff}
+.vs>div{padding:20px 22px}
+.vs>div:first-child{background:#f4f1ec;border-right:3px solid var(--ink)}
+.vs>div:last-child{background:var(--mint)}
+.vs h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.vs li{font-size:14.5px;margin:6px 0 6px 18px}
+.drill{margin-top:34px;background:var(--cob);color:#fff;--sc:var(--sun)}
+.drill h3{font-size:22px;font-weight:800}
+.drill ul{list-style:none;margin-top:12px;display:grid;gap:10px}
+.drill li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.drill input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border:2.5px solid #fff;border-radius:7px;margin-top:2px;cursor:pointer;background:transparent}
+.drill input:checked{background:var(--sun);border-color:var(--sun)}
+.drill small{display:block;opacity:.8;font-size:13px}
+.drill .reset{margin-top:14px;font:inherit;font-size:13px;font-weight:800;color:#fff;background:none;border:0;border-bottom:2px solid #fff;cursor:pointer}
+.closing{margin-top:34px;text-align:center;font-size:clamp(22px,3vw,32px);font-weight:800;line-height:1.5}
+.closing em{font-style:normal;background:var(--cor);color:#fff;border:3px solid var(--ink);border-radius:14px;padding:0 10px;display:inline-block;transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink)}
+@media(max-width:900px){
+ .toc,.fourd,.rule3{grid-template-columns:1fr 1fr}
+ .step{grid-template-columns:64px minmax(0,1fr)}.step .eg{grid-column:1/-1}
+ .vs{grid-template-columns:1fr}.vs>div:first-child{border-right:0;border-bottom:3px solid var(--ink)}
+ .essay{padding:24px 20px;font-size:16px}
+}
+@media(max-width:560px){.toc,.fourd,.rule3{grid-template-columns:1fr}.moves,.keep{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-root="../" data-page="guide">
+<div class="phead"><div class="t r-a rise dots" style="background:var(--mint);--sc:var(--cob)"><div class="burst"></div><span class="big" aria-hidden="true">HOW TO</span><span class="lb">✦ AI 基本功</span><h1>工具會換，<br>基本功不會</h1><p>三件每個人遲早會問的事：Prompt、Skill、Agent 到底差在哪；怎樣講 AI 才聽得懂；AI 越來越強，人要留住什麼。內容來自我們實際做專案踩過的坑，還有這幾個月收藏、查證過的幾百則分享。</p></div></div>
+
+<main class="wrap">
+<nav class="toc" aria-label="三章">
+  <a class="t r-c rise" href="#build" style="background:var(--sun);--sc:var(--cor)"><span class="n">01</span><b>Prompt、Skill、Agent：什麼時候用哪個</b><span class="d">一道樓梯，看你現在該站在哪一級</span></a>
+  <a class="t r-e rise" href="#talk" style="background:var(--peach);--sc:var(--cob)"><span class="n">02</span><b>怎樣跟 AI 講話</b><span class="d">12 招，每招都有「這樣講／改這樣講」</span></a>
+  <a class="t r-h rise" href="#human" style="background:var(--lil);--sc:var(--mint)"><span class="n">03</span><b>AI 越強，人要留住什麼</b><span class="d">不會被取代的 6 件事，加一份每週練習</span></a>
+</nav>
+
+<!-- ========== 01 ========== -->
+<section class="ch" id="build">
+  <div class="ch-head"><span class="n">01</span><h2>Prompt、Skill、Agent：<br>什麼時候用哪個</h2><p>名詞的定義在<a href="../learn/#s2" style="text-decoration:underline">學習路線第 2 格</a>。這裡講的是更實際的問題：手上這件事，要用到哪一級？答案通常比你想的低。能用一句話解決的，不要先蓋一個 Agent。</p></div>
+  <div class="ladder">
+    <div class="t step r-d rise" style="background:#fff;--sc:var(--sun)"><div class="lv">1<small>PROMPT</small></div><div><h3>一句話指令<em>一次性</em></h3><p class="when">只做一次、做完就算的事。寫信、改文案、問問題。</p></div><div class="eg"><b>例子</b>「把這段改成給客人看的版本，三句以內，不要用敬語。」</div></div>
+    <div class="t step r-d rise" style="background:var(--sun);--sc:var(--cob)"><div class="lv">2<small>RULES</small></div><div><h3>規則檔<em>每次都要講的</em></h3><p class="when">發現自己第三次講同一句話，就把它寫進規則檔：Claude 的 CLAUDE.md、ChatGPT 的自訂指示、Gemini 的 Gem。</p></div><div class="eg"><b>例子</b>「回覆一律繁體中文」「沒查證過的數字不准寫成事實」「密碼不能寫進會上傳的檔案」</div></div>
+    <div class="t step r-d rise" style="background:var(--mint);--sc:var(--lil)"><div class="lv">3<small>SKILL</small></div><div><h3>技能包<em>有固定步驟的事</em></h3><p class="when">同一套步驟做到第三次，寫成 Skill。之後一句「照 IG 貼文那套做」，它就照順序跑，不用重教。</p></div><div class="eg"><b>例子</b>寫 YouTube 腳本要先評開頭、再排剪輯清單——別人已經寫好 11 個技能，<a href="../tools/#skill" style="text-decoration:underline">工具地圖</a>裡有。</div></div>
+    <div class="t step r-d rise" style="background:var(--peach);--sc:var(--cor)"><div class="lv">4<small>MCP</small></div><div><h3>接上工具<em>要碰到外面</em></h3><p class="when">要 AI 去讀你的 Gmail、改 Google Sheet、發 Telegram，就要接工具（MCP 或 API）。它從「會講」變成「會做」。</p></div><div class="eg"><b>例子</b>讓 Claude Code 直接操作 Google Flow 生影片（gflow-cli），不用自己一張一張點。</div></div>
+    <div class="t step r-d rise" style="background:var(--cob);color:#fff;--sc:var(--sun)"><div class="lv">5<small>AGENT</small></div><div><h3>代理<em>自己做完一整件</em></h3><p class="when">你只想看結果、不想盯過程：每天早上整理新聞、每週出一份報告。前面四級都穩了，才輪到這一級。</p></div><div class="eg" style="color:var(--ink)"><b>例子</b>這個網站的新聞頁：每天 09:00 自己抓、自己摘要、自己更新，沒有人按按鈕。</div></div>
+    <div class="t step r-d rise" style="background:var(--lil);--sc:var(--mint)"><div class="lv">6<small>TEAM</small></div><div><h3>多個 AI 互相審<em>出錯很貴的事</em></h3><p class="when">一個 AI 寫計畫，另一家的 AI 專門挑毛病，吵到同意才動手。兩家盲點不一樣，抓得到彼此的錯。</p></div><div class="eg"><b>例子</b>我們寫程式的分工：Claude 規劃和審查，Codex 動手，再讓 Claude 檢查成品。</div></div>
+  </div>
+
+  <div class="rule3">
+    <div><b>講第三次 → 規則檔</b>同一句叮嚀，不要講第四次。</div>
+    <div><b>做第三次 → Skill</b>同一套步驟，寫下來讓它照做。</div>
+    <div><b>要碰外面 → 接工具</b>讀信、改表、發訊息。</div>
+    <div><b>不想盯 → Agent</b>但前面三級要先穩。</div>
+  </div>
+
+  <div class="t check r-b rise">
+    <h3>裝別人的 Skill 之前，先問 4 件事</h3>
+    <ol>
+      <li><b>有沒有授權？</b>看 repo 有沒有 LICENSE。MIT 最放心；沒寫授權的，只能自己用，不要轉貼、不要放進公開專案。</li>
+      <li><b>你讀過內容嗎？</b>Skill 就是一份給 AI 的指令，裡面可以寫任何事，包括叫它上傳你的檔案。裝之前至少掃過一次。</li>
+      <li><b>是不是整包裝？</b>幾百個角色一次裝進去，AI 反而不知道該挑哪個。挑你要的兩三個就好。</li>
+      <li><b>網上說的數字對嗎？</b>轉貼常寫「破 10 萬星」，我們查過幾個，有的偏高、有的偏低。打開 repo 自己看。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== 02 ========== -->
+<section class="ch" id="talk">
+  <div class="ch-head"><span class="n">02</span><h2>怎樣跟 AI 講話</h2><p>先記一個框架，再學招式。這個框架借自 Anthropic 的免費課程，把「跟 AI 合作」拆成四件事，下面 12 招都在練其中一件。</p></div>
+  <div class="fourd">
+    <div style="background:var(--sun)"><span class="d">D1</span><b>委派</b><p>這件事交給 AI 多少、自己留多少。</p></div>
+    <div style="background:var(--peach)"><span class="d">D2</span><b>描述</b><p>把要什麼講清楚，講到它不用猜。</p></div>
+    <div style="background:var(--mint)"><span class="d">D3</span><b>判斷</b><p>看得出它給的東西好不好、對不對。</p></div>
+    <div style="background:var(--lil)"><span class="d">D4</span><b>查證</b><p>交出去之前，確認是真的、能用的。</p></div>
+  </div>
+  <div class="fbar" id="dfilter"></div>
+  <div class="moves" id="moves"></div>
+  <p class="note" style="margin-top:22px">還想看更多？<a href="../tips/" style="text-decoration:underline">每天一招</a>是我們自己的協作規則，<a href="../prompts/" style="text-decoration:underline">Prompt 卡</a>是可以直接複製的提示詞。</p>
+</section>
+
+<!-- ========== 03 ========== -->
+<section class="ch" id="human">
+  <div class="ch-head"><span class="n">03</span><h2>AI 越強，<br>人要留住什麼</h2><p>這一章沒有標準答案，是我們做了幾十個 AI 專案之後的看法。你可以不同意。</p></div>
+  <div class="t essay r-c rise">
+    <p class="big">先講不好聽的：有些工作真的會被取代。</p>
+    <p>只負責「照著做」的部分，AI 已經做得又快又便宜。一個人加上 AI，現在可以做出以前要一個小團隊的東西——這個網站、每天的新聞、十幾個案例，背後就是一個人。你學了四年的某套軟體，可能明年就有一句話能取代的版本。</p>
+    <p>但做了這麼多專案，我們發現<mark>AI 越會做，「決定做什麼」和「看得出好壞」就越值錢</mark>。每個人都能一秒生出十張圖，分得出哪張好的人卻沒有變多。下面六件事，是我們覺得不該、也很難交出去的。</p>
+  </div>
+  <div class="keep" id="keep"></div>
+
+  <div class="vs rise">
+    <div><h3>比較容易被取代</h3><ul>
+      <li>只會照指示做，不問為什麼</li>
+      <li>價值綁在某一套軟體的操作上</li>
+      <li>交東西出去，但不對結果負責</li>
+      <li>內容是網上整理來的，沒有自己的經歷</li>
+      <li>每次都從零開始，沒有累積</li>
+    </ul></div>
+    <div><h3>會變得更值錢</h3><ul>
+      <li>知道要解決什麼問題，敢說「這個不做」</li>
+      <li>一眼看得出哪裡不對勁</li>
+      <li>名字簽在上面，出錯會自己去查</li>
+      <li>有現場、有經歷、有別人抄不走的故事</li>
+      <li>把做過的事變成規則和系統，越做越快</li>
+    </ul></div>
+  </div>
+
+  <div class="t drill r-a rise">
+    <h3>每週 5 個練習</h3>
+    <ul id="drill">
+      <li><input type="checkbox" aria-label="練習 1"><span>交一件本來自己做的事給 AI，然後找出它哪裡錯<small>練判斷。找不到錯，通常是你沒看仔細，不是它沒錯。</small></span></li>
+      <li><input type="checkbox" aria-label="練習 2"><span>寫下一次「我為什麼選這個、不選那個」<small>練決策。三行就好，之後回頭看會很有用。</small></span></li>
+      <li><input type="checkbox" aria-label="練習 3"><span>去一次現場：拍一張、問一個人、試一次<small>練經歷。AI 沒去過的地方，就是你的內容。</small></span></li>
+      <li><input type="checkbox" aria-label="練習 4"><span>把一件重複的事寫成規則或 Skill<small>練系統。下週同一件事就快一半。</small></span></li>
+      <li><input type="checkbox" aria-label="練習 5"><span>查證一個網上看到的 AI 說法<small>練查證。星數、價錢、「免費」，打開原始來源看一次。</small></span></li>
+    </ul>
+    <button class="reset" id="drillReset" type="button">清空，下週再來</button>
+  </div>
+  <p class="closing">工具每個月都在換，<br>會判斷的人，<em>換什麼都用得上</em>。</p>
+</section>
+</main>
+
+<script src="../assets/site.js"></script>
+<script>
+const E=AISUN.esc;
+/* ---------- 02 溝通 12 招 ---------- */
+const MOVES=[
+ {d:'D2',t:'叫得出名字，AI 才做得出來',why:'跟 AI 說「加點動畫」，它只會給你淡入淡出。每種效果都有名字，把名字寫進去，它就知道你要哪一種。',no:'幫這頁加一點動畫，要好看一點。',yes:'標題用 Split Flap（翻牌）效果出現；下面的卡片用 Scroll-triggered，滑到才一張一張浮上來；選單用 Sticky，滑到頂就固定。',src:'整理自 Threads @ai_tjb、@ai_cpocoder 的動畫用語分享'},
+ {d:'D2',t:'講動畫，交代 5 件事',why:'起點、觸發、轉軸、收尾、旁邊的東西。少講一件，它就自己猜。',no:'做一個衣架翻轉的動畫。',yes:'衣架一開始正面朝前（起點），滑鼠移上去時觸發，以掛鉤為轉軸（transform-origin 在頂端）翻 180 度，用 spring 收尾、輕輕晃兩下停住；旁邊的價錢標籤同時從透明變清楚。',src:'整理自 Threads @ai_cpocoder'},
+ {d:'D2',t:'附參考圖，不要用形容詞',why:'「簡約高級」每個人想的都不一樣。挑兩三張喜歡的截圖丟給它，再說要借哪一點。',no:'幫我做一個簡約、高級、有質感的首頁。',yes:'附上 3 張截圖。只借第 1 張的排版（大標靠左、大量留白）、第 3 張的字體感覺；顏色用我們的品牌色 #FFCF3F 和 #1D1A2E。不要照抄任何一張。',src:'參考圖哪裡找：Land-book、Mobbin、60fps（見工具地圖）'},
+ {d:'D1',t:'先要大綱，確認了再做',why:'方向錯了，做得越完整越浪費。先拿純文字的大綱或分鏡，你點頭了再動手。',no:'幫我做一支 15 秒的產品介紹影片。',yes:'先不要做影片。讀這個網址，抽出品牌色和三個賣點，給我一份純文字分鏡：每一秒畫面是什麼、字幕寫什麼。我確認之後你再開始做。',src:'結構借自 Threads @ai.marketing.hk 公開的 prompt'},
+ {d:'D2',t:'寫一張「不要」清單',why:'AI 最常出包的地方是自己加戲：多一行字、補一個數字、加一個浮水印。把不要的寫清楚，比多寫十個要求有用。',no:'幫我寫一篇優惠活動的貼文。',yes:'寫一篇優惠活動貼文。\n不要發明折扣數字，我沒給的就留〔　〕；不要用「限時搶購」「錯過可惜」這種字；不要 emoji 開頭；不要超過 120 字。',src:'我們自己的寫作規則'},
+ {d:'D2',t:'一頁只放一個重點',why:'叫 AI 做介面，最常拿到一張很空的表單。告訴它每個畫面要有一個主角。',no:'做一個咖啡店點餐的手機網頁。',yes:'做一個咖啡店點餐的手機網頁。每個畫面都要有一個視覺重點（飲料大圖或大價錢），縮小看也要飽滿；選大杯時價錢要跟著跳。',src:'整理自 IG @chloemakesdesign'},
+ {d:'D3',t:'讓兩個 AI 吵一架',why:'同一個 AI 檢查自己寫的東西，很難抓到自己的盲點。換一家，或至少換一個角色。',no:'幫我寫一份開網店的計畫，順便檢查有沒有問題。',yes:'你是很挑剔的審查員。下面是另一個 AI 寫的開網店計畫，找出最可能失敗的 3 個地方，每個說明為什麼、會造成什麼後果。不用客氣，不用稱讚。',src:'概念來自 Howie AI 學院「吵架包」、開源工具 Claudex Loop'},
+ {d:'D3',t:'先問「這份資料有什麼問題」',why:'直接要結論，它會很有自信地從髒資料算出錯的答案。先叫它挑毛病，再叫它分析。',no:'幫我分析這份銷售表，告訴我結論。',yes:'先不要分析。讀完整份表，列出這份資料的問題：空白欄、寫法不一致、看起來不合理的數字。我確認怎麼處理之後，你再開始算。',src:'來自我們的案例：租車集團儀表板'},
+ {d:'D2',t:'同一份稿，每個平台換第一句',why:'內容可以一樣，開頭不能一樣。每個平台的人停下來的理由不同。',no:'把這篇文章改成 Threads、IG、FB 三個版本。',yes:'把這篇改成三個版本。只換第一句和長度：Threads 像跟朋友講話；IG 輪播封面寫「給誰＋他的痛點」；FB 從一個場景開始。事實不能改，原稿沒有的數字不要補。',src:'整理自 Threads @chia.hsun301'},
+ {d:'D1',t:'創意題給舞台，規格題給規格',why:'要點子的時候，條件給太多它只會照抄條件；要成品的時候，條件給太少它就亂猜。先想清楚你現在要的是哪一種。',no:'做一個動畫，要有 3 個圓、藍色、從左邊進來、2 秒……（其實你想要的是靈感）',yes:'做一支 15 秒動畫，當成你展示動畫實力的作品集片段。全力以赴，風格你決定。',src:'整理自 IG @freedumx01 與 Threads 上 Opus 5.5 的使用心得'},
+ {d:'D4',t:'AI 說它看過影片？先確認',why:'把 IG、Threads 連結丟給 AI，它多半只讀到文字說明，畫面根本沒看到。要它看，就截圖或給影片檔。',no:'看一下這支 Reels，照它的動畫做一個。',yes:'附上這支影片的 6 張截圖（每秒一張）。先描述你在每張看到的畫面和動作，我確認你看懂了，再照著做。',src:'我們整理收藏時踩過的坑'},
+ {d:'D4',t:'錯了不要只改，叫它寫下來',why:'這次改好了，下次同樣的錯還會回來。讓它把教訓寫進規則檔，改一次就記住。',no:'不對，日期格式錯了，改一下。',yes:'日期格式錯了，應該是 2026-11-25。改好之後，把「日期一律用 YYYY-MM-DD」寫進我們的規則檔，以後不用我提醒。',src:'整理自 IG @marcorefusestocode，也是我們每天在用的做法'}
+];
+const MB=['#fff','var(--sun)','var(--mint)','var(--peach)','var(--lil)'],MS=['var(--sun)','var(--cob)','var(--lil)','var(--cor)','var(--mint)'],RD=['r-a','r-e','r-c','r-f','r-b','r-h'];
+let dsel='all';
+function renderMoves(){
+ const L=MOVES.map((m,i)=>({...m,i})).filter(m=>dsel==='all'||m.d===dsel);
+ document.getElementById('moves').innerHTML=L.map(({i,...m},k)=>`<article class="t move ${RD[k%6]} rise" style="background:${MB[k%5]};--sc:${MS[k%5]}">
+  <div><span class="no">#${String(i+1).padStart(2,'0')}</span><span class="tag">${m.d}</span></div>
+  <h3>${E(m.t)}</h3><p class="why">${E(m.why)}</p>
+  <div class="say bad"><i>這樣講</i>${E(m.no)}</div>
+  <div class="say good" id="mv${i}"><i>改這樣講</i>${E(m.yes)}</div>
+  <div class="row"><button class="btn sm" data-copy="mvt${i}">複製改法</button><span class="src">${E(m.src)}</span></div>
+  <span id="mvt${i}" hidden>${E(m.yes)}</span>
+ </article>`).join('');AISUN.rise()}
+const df=document.getElementById('dfilter'),DN={D1:'委派',D2:'描述',D3:'判斷',D4:'查證'};
+df.innerHTML=['all','D1','D2','D3','D4'].map(v=>`<button class="chip${v==='all'?' on':''}" data-v="${v}">${v==='all'?'全部 12 招':v+' '+DN[v]+' '+MOVES.filter(m=>m.d===v).length}</button>`).join('');
+df.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;dsel=b.dataset.v;df.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));renderMoves()};
+renderMoves();
+
+/* ---------- 03 不會被取代的 6 件事 ---------- */
+const KEEP=[
+ {t:'決定要做什麼',p:'AI 可以給你十個方案，但選哪一個、哪些不做，是你。最難的往往是說「這個先不做」。',ai:'AI 擅長：把每個方案寫得很完整，列出優缺點。'},
+ {t:'看得出好壞',p:'每個人都能一秒生十張圖，網上一堆人在教怎麼「去 AI 味」——因為大部分人分不出來。看得出哪裡怪、知道怎麼改，就是品味。',ai:'AI 擅長：照你的標準修改，前提是你講得出標準。'},
+ {t:'真的去過、真的做過',p:'AI 可以寫「沖繩必去十個景點」，寫不出你那天下午被雨困在小店、老闆請你喝的那杯茶。我們的案例只收真的做過的，就是這個原因。',ai:'AI 擅長：把你的經歷整理得更好讀。'},
+ {t:'查證，然後負責',p:'AI 很會很有自信地講錯。我們查過同一套商品的行情，兩個來源差了一萬日圓；轉貼說「6 千星」的工具，實際是 7 千 1。最後簽名的是人。',ai:'AI 擅長：幫你找原始來源、列出要再確認的地方。'},
+ {t:'關係與信任',p:'客人找你，不只是因為你會做，是因為信你。出事時打電話來道歉、記得對方上次說過什麼，這些 AI 代替不了。',ai:'AI 擅長：幫你記住細節、準備好要講的話。'},
+ {t:'把事情串成系統',p:'會用 AI 工具的人很多，能讓工具每天自己跑、越跑越準的人很少。差距不在工具，在有沒有把做過的事變成規則和流程。',ai:'AI 擅長：照著系統做事。系統要你來設計。'}
+];
+const KB=['var(--sun)','#fff','var(--peach)','var(--mint)','var(--lil)','#fff'],KS=['var(--cob)','var(--cor)','var(--cob)','var(--lil)','var(--mint)','var(--sun)'];
+document.getElementById('keep').innerHTML=KEEP.map((k,i)=>`<article class="t ${RD[(i+2)%6]} rise" style="background:${KB[i]};--sc:${KS[i]}"><span class="lb">人留住的 ${i+1}</span><h3>${E(k.t)}</h3><p>${E(k.p)}</p><p class="ai"><b>這部分交給 AI</b>${E(k.ai)}</p></article>`).join('');
+AISUN.rise();
+
+/* ---------- 每週練習(只存在這台裝置) ---------- */
+const KEY='aisun.drill';const boxes=[...document.querySelectorAll('#drill input')];
+try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((b,i)=>b.checked=!!s[i])}catch(e){}
+const saveDrill=()=>{try{localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked)))}catch(e){}};
+boxes.forEach(b=>b.onchange=saveDrill);
+document.getElementById('drillReset').onclick=()=>{boxes.forEach(b=>b.checked=false);saveDrill()};
+</script>
+</body>
+</html>

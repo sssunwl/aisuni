@@ -1,0 +1,89 @@
+{
+  "updated": "2026-11-25",
+  "cats": [
+    {"k": "chat", "t": "聊天助手", "d": "直接打字問的 AI。先選一個用熟，比選對哪家重要。"},
+    {"k": "code", "t": "寫程式／Agent", "d": "會自己開檔案、跑指令、做完一整件事的 AI。"},
+    {"k": "skill", "t": "Skill 技能包", "d": "別人寫好的 SOP，裝進 Claude Code／Codex 就多一個能力。"},
+    {"k": "image", "t": "圖片", "d": "生圖、修圖、商品圖。"},
+    {"k": "video", "t": "影片生成", "d": "用文字或圖片直接生出影片。"},
+    {"k": "edit", "t": "剪輯／動畫", "d": "把素材剪成片、做字幕和動態文字。"},
+    {"k": "sound", "t": "聲音", "d": "配音、音效、字幕轉錄。"},
+    {"k": "web", "t": "建站／設計", "d": "做網頁、找參考、去 AI 味。"},
+    {"k": "auto", "t": "自動化／社群", "d": "排程發文、收集資料、串流程。"},
+    {"k": "know", "t": "知識／筆記", "d": "把資料存起來，讓人和 AI 都讀得到。"},
+    {"k": "learn", "t": "學習資源", "d": "想系統地學，從這裡開始。"}
+  ],
+  "tools": [
+    {"name": "ChatGPT", "cat": "chat", "desc": "最多人用的通用助手，寫字、生圖、語音都有。", "price": "免費／訂閱", "url": "https://chatgpt.com/", "use": true, "added": "2026-07-01"},
+    {"name": "Claude", "cat": "chat", "desc": "長文和寫程式最穩，網頁上就能做出可以點的小程式（Artifact）。", "price": "免費／訂閱", "url": "https://claude.ai/", "use": true, "added": "2026-07-01"},
+    {"name": "Gemini", "cat": "chat", "desc": "跟 Google 全家（Gmail、雲端硬碟、YouTube）接得最好，可以直接讀 YouTube 影片。", "price": "免費／訂閱", "url": "https://gemini.google.com/", "use": true, "added": "2026-07-01"},
+    {"name": "Grok", "cat": "chat", "desc": "X（Twitter）的 AI。官方整理了 56 種用法，從每日簡報到記帳都有。", "price": "免費／訂閱", "url": "https://grok.com/", "note": "我們還沒認真試過。", "added": "2026-11-24"},
+    {"name": "NotebookLM", "cat": "know", "desc": "丟一堆文件進去，只根據你給的資料回答，還能做成語音節目。", "price": "免費", "url": "https://notebooklm.google.com/", "added": "2026-07-13"},
+    {"name": "LibreChat", "cat": "chat", "desc": "開源的聊天介面，一個畫面接 ChatGPT、Claude、Gemini 好幾家。", "price": "開源", "url": "https://github.com/danny-avila/LibreChat", "open": true, "added": "2026-10-18"},
+
+    {"name": "Claude Code", "cat": "code", "desc": "在終端機裡工作的 AI 工程師：讀整個專案、改檔案、跑指令、自己檢查。這個網站就是它做的。", "price": "訂閱", "url": "https://claude.com/claude-code", "use": true, "added": "2026-07-01"},
+    {"name": "Codex", "cat": "code", "desc": "OpenAI 的寫程式代理。我們的分工是 Claude 規劃和審查、Codex 動手寫。", "price": "訂閱", "url": "https://openai.com/codex/", "use": true, "added": "2026-07-01"},
+    {"name": "Cursor", "cat": "code", "desc": "內建 AI 的程式編輯器，適合想邊看程式邊改的人。", "price": "免費／訂閱", "url": "https://cursor.com/", "added": "2026-10-18"},
+    {"name": "OpenHands", "cat": "code", "desc": "開源的自主開發代理，可以連續跑開發任務，人只負責驗收。", "price": "開源", "url": "https://github.com/All-Hands-AI/OpenHands", "open": true, "added": "2026-10-18"},
+    {"name": "Manus", "cat": "code", "desc": "通用代理，給它網址或任務就自己上網做完，最近也能做動態圖和剪片。", "price": "訂閱", "url": "https://manus.im/", "note": "網上很多是業配，效果要自己試。", "added": "2026-10-22"},
+    {"name": "Claudex Loop", "cat": "code", "desc": "讓兩個 AI 互相審：Claude 寫計畫、Codex 挑毛病，同意了才開工。", "price": "開源 MIT", "url": "https://github.com/chaseai-yt/claudex-loop", "open": true, "use": true, "added": "2026-10-25"},
+    {"name": "Graft", "cat": "code", "desc": "把整個程式庫畫成一份地圖，AI 每次開新對話不用重新翻遍所有檔案，省 Token。", "price": "開源", "url": "https://github.com/NanoNets/Graft", "open": true, "note": "小專案用不到，大專案才值得。", "added": "2026-10-22"},
+    {"name": "codebase-memory-mcp", "cat": "code", "desc": "把程式碼的函式、呼叫關係存成知識圖，AI 查結構不用逐檔搜尋。", "price": "開源 MIT", "url": "https://github.com/DeusData/codebase-memory-mcp", "open": true, "note": "官方說省 99% Token，但比較對象是沒優化的搜尋，打個折看。", "added": "2026-10-22"},
+    {"name": "GitReverse", "cat": "code", "desc": "把公開 GitHub 網址的 github 換成 gitreverse，就得到一段給 AI 讀的專案說明。", "price": "免費", "url": "https://gitreverse.com/", "added": "2026-07-16"},
+    {"name": "Reverse API Engineer", "cat": "code", "desc": "讓 AI 開瀏覽器逛網站，錄下背後的請求，寫成你自己的資料抓取程式。", "price": "開源", "url": "https://github.com/kalil0321/reverse-api-engineer", "open": true, "note": "繞過網頁直接打對方後台，先看清楚對方的使用條款。", "added": "2026-11-01"},
+
+    {"name": "youtube-agent-skill", "cat": "skill", "desc": "11 個 YouTube 經營技能：寫稿、標題封面檢查、剪輯清單、留存率分析、Shorts 剪法。", "price": "開源 MIT", "url": "https://github.com/Jakeschincariol/youtube-agent-skill", "open": true, "stars": "7.1k", "note": "只負責寫，不會幫你發片。", "added": "2026-11-24"},
+    {"name": "instagram-agent-skill", "cat": "skill", "desc": "13 個 IG 小編技能：Reels 腳本（26 種開頭公式）、留言、私訊、週計劃、爆款拆解。", "price": "開源 MIT", "url": "https://github.com/Jakeschincariol/instagram-agent-skill", "open": true, "note": "不用連帳號，發文還是自己按。", "added": "2026-10-25"},
+    {"name": "wallstreet-explainer", "cat": "skill", "desc": "輸入主題，自動寫腳本、找新聞素材、配音，剪成財經科技解說短片，橫直式都可以。", "price": "開源 MIT", "url": "https://github.com/HeyChengC/wallstreet-explainer", "open": true, "stars": "1.2k", "note": "樣片裡的第三方畫面不在 MIT 範圍，要自己標出處。", "added": "2026-11-24"},
+    {"name": "taste-skill", "cat": "skill", "desc": "去 AI 味的網頁設計技能：先找品牌特色，從 20 個方向挑一個，做完自己截圖挑毛病再改。", "price": "開源", "url": "https://github.com/Leonxlnx/taste-skill", "open": true, "note": "一次 30–45 分鐘、燒幾十萬 Token，只適合宣傳頁。", "added": "2026-10-23"},
+    {"name": "apple-design skill", "cat": "skill", "desc": "讓 Claude Code 做出 Apple 風格介面的設計規則。", "price": "開源", "url": "https://github.com/emilkowalski/skills", "open": true, "added": "2026-07-19"},
+    {"name": "AI-drama-pound", "cat": "skill", "desc": "繁中 AI 短劇編劇技能：八階段從題材到臺詞，專治角色動機不清、反轉沒伏筆。", "price": "開源 MIT", "url": "https://github.com/POUND0423/AI-drama-pound", "open": true, "use": true, "added": "2026-09-03"},
+    {"name": "Remotion skills", "cat": "skill", "desc": "Remotion 官方技能包，其中 remotion-maps 可以做「香港飛東京」那種地圖航線開場。", "price": "開源", "url": "https://github.com/remotion-dev/skills", "open": true, "added": "2026-10-22"},
+    {"name": "agency-agents", "cat": "skill", "desc": "一大包寫好的專職 AI 角色（設計師、工程師、行銷……），按部門分組。", "price": "開源 MIT", "url": "https://github.com/msitarzewski/agency-agents", "open": true, "note": "當寫法範本參考就好，整包裝進去會干擾 AI 自動挑選。", "added": "2026-10-22"},
+
+    {"name": "ChatGPT 圖像", "cat": "image", "desc": "對話裡直接生圖、改圖，看得懂中文長描述。我們的 Prompt 卡效果圖多半用它做。", "price": "免費／訂閱", "url": "https://chatgpt.com/", "use": true, "added": "2026-07-01"},
+    {"name": "Nano Banana／Imagen", "cat": "image", "desc": "Google 的生圖模型，在 Gemini 和 Flow 裡都用得到，改圖保留人臉很穩。", "price": "免費／訂閱", "url": "https://gemini.google.com/", "use": true, "added": "2026-11-25"},
+    {"name": "Higgsfield", "cat": "image", "desc": "一個介面整合 30 多個圖片和影片模型，有很多爆紅特效預設。", "price": "付費點數", "url": "https://higgsfield.ai/", "note": "我們算過：一支 60 秒要 150 點以上，重試就翻倍，最後沒用。", "added": "2026-07-25"},
+    {"name": "PixPix", "cat": "image", "desc": "電商用：上傳一張商品照，出主圖、情境圖、詳情頁和多語文案。", "price": "付費", "url": "https://toolsaiapp.com/tool/pixpix-ai-product-image-video-generator-for-cross-bord/", "note": "跟動漫生圖的 PixAI 不是同一個。", "added": "2026-09-03"},
+    {"name": "Canva", "cat": "image", "desc": "不會設計也能排版，現在內建 AI 生圖和動態背景。", "price": "免費／訂閱", "url": "https://www.canva.com/", "added": "2026-11-20"},
+
+    {"name": "Google Flow（Veo）", "cat": "video", "desc": "Google 的影片生成，首尾放同一張圖可以做無限循環片。", "price": "訂閱", "url": "https://labs.google/flow/", "use": true, "added": "2026-07-01"},
+    {"name": "gflow-cli", "cat": "video", "desc": "讓 Claude Code／Codex 直接操作 Google Flow 生影片和圖，不用自己一張一張點。", "price": "開源 MIT", "url": "https://github.com/ffroliva/gflow-cli", "open": true, "added": "2026-11-25"},
+    {"name": "Kling", "cat": "video", "desc": "生成影片的大熱門，動作和人物比較自然。", "price": "免費額度／訂閱", "url": "https://klingai.com/", "added": "2026-11-20"},
+    {"name": "Runway", "cat": "video", "desc": "老牌 AI 影片工具，生成和修片功能齊全。", "price": "訂閱", "url": "https://runwayml.com/", "added": "2026-11-20"},
+    {"name": "HeyGen", "cat": "video", "desc": "數位分身和虛擬主持人，打字就讓「你」開口講話。", "price": "訂閱", "url": "https://www.heygen.com/", "added": "2026-11-20"},
+    {"name": "MoneyPrinterTurbo", "cat": "video", "desc": "開源一條龍：輸入主題，自動寫腳本、配音、配素材、剪成短片。", "price": "開源", "url": "https://github.com/harry0703/MoneyPrinterTurbo", "open": true, "note": "我們評估後沒用：一鍵出的片子很像，沒有自己的東西。", "added": "2026-08-16"},
+    {"name": "OpenMontage", "cat": "video", "desc": "把 Claude Code 變成影片工作室：調研、腳本、配音、素材、自動剪輯一條龍。", "price": "開源 AGPLv3", "url": "https://github.com/calesthio/OpenMontage", "open": true, "note": "AGPL：拿去做商業服務要公開原始碼。", "added": "2026-10-22"},
+
+    {"name": "ffmpeg", "cat": "edit", "desc": "切、拼、混音、轉檔，剪片九成的體力活都是它。AI 很會寫 ffmpeg 指令。", "price": "免費開源", "url": "https://ffmpeg.org/", "open": true, "use": true, "added": "2026-08-13"},
+    {"name": "Remotion", "cat": "edit", "desc": "用寫網頁的方式做影片，字卡、動畫、資料圖表都能寫成程式重複用。", "price": "開源（公司要授權）", "url": "https://www.remotion.dev/", "use": true, "added": "2026-08-13"},
+    {"name": "HyperFrames", "cat": "edit", "desc": "HeyGen 開源的動作知識庫：48 條動作規則、20 多個場景範本，告訴你東西該怎麼動。", "price": "開源", "url": "https://github.com/heygen-com/hyperframes", "open": true, "note": "我們只借它的動作曲線數字，當字典用。", "added": "2026-08-13"},
+    {"name": "CapCut 剪映", "cat": "edit", "desc": "手機電腦都能剪，自動字幕和模板很多。", "price": "免費／訂閱", "url": "https://www.capcut.com/", "added": "2026-11-18"},
+    {"name": "Descript", "cat": "edit", "desc": "像改文件一樣剪片：刪掉逐字稿裡的字，影片就跟著剪掉。", "price": "免費／訂閱", "url": "https://www.descript.com/", "added": "2026-11-20"},
+    {"name": "IG Edits", "cat": "edit", "desc": "Instagram 官方剪輯 App，開始加入 AI 剪輯功能。", "price": "免費", "url": "https://www.instagram.com/", "added": "2026-11-24"},
+
+    {"name": "Whisper", "cat": "sound", "desc": "在自己電腦上把講話轉成字幕，每個字都有時間碼，畫面可以準確對位。", "price": "免費開源", "url": "https://github.com/openai/whisper", "open": true, "use": true, "added": "2026-08-13"},
+    {"name": "earshot", "cat": "sound", "desc": "給 AI 剪片用的音效引擎：252 個程式算出來的音效，自動對準換畫面那一格，還會幫你的片打分。", "price": "開源 MIT", "url": "https://github.com/Leonxlnx/earshot", "open": true, "stars": "5.6k", "added": "2026-11-24"},
+
+    {"name": "Tenloom 織作", "cat": "web", "desc": "拖拉式建站，輸出單一 HTML 檔，貼進 Google 協作平台就上線，不用租主機。", "price": "免費", "url": "https://www.threads.com/share/_-VV9vMqB/", "added": "2026-10-22"},
+    {"name": "Three.js", "cat": "web", "desc": "網頁 3D 的標準工具。叫 AI 用它，就能做出可以走進去的網站或 3D 儀表板。", "price": "免費開源", "url": "https://threejs.org/", "open": true, "added": "2026-10-25"},
+    {"name": "PulsoIcon", "cat": "web", "desc": "9000 多個會動的 icon，開源可商用，React 網站直接用。", "price": "開源", "url": "https://github.com/CityPulso/PulsoIcon-Package", "open": true, "added": "2026-11-18"},
+    {"name": "21st.dev", "cat": "web", "desc": "現成的網頁元件庫，可以透過 MCP 讓 AI 直接拿來用。", "price": "免費／付費", "url": "https://21st.dev/", "added": "2026-08-13"},
+    {"name": "Land-book", "cat": "web", "desc": "網站排版參考庫。挑 2–3 個喜歡的截圖丟給 AI，比用文字形容準很多。", "price": "免費", "url": "https://land-book.com/", "added": "2026-10-25"},
+    {"name": "Mobbin", "cat": "web", "desc": "真實 App 的畫面截圖庫，做 App 介面前先來這裡找參考。", "price": "免費／訂閱", "url": "https://mobbin.com/", "added": "2026-10-25"},
+    {"name": "60fps", "cat": "web", "desc": "UI 動畫參考庫，看別人的按鈕和轉場怎麼動。", "price": "免費", "url": "https://60fps.design/", "added": "2026-10-25"},
+    {"name": "Cloudflare Pages／GitHub Pages", "cat": "web", "desc": "免費放網站的地方。AI 做好的網頁丟上去就有網址。", "price": "免費", "url": "https://pages.cloudflare.com/", "use": true, "added": "2026-07-01"},
+
+    {"name": "flowfactory 小排", "cat": "auto", "desc": "流程工廠裡的「社群排程員」，裝起來就能排 Threads 自動發文。", "price": "免費額度", "url": "https://flowfactory.xtoolbot.com/", "added": "2026-09-27"},
+    {"name": "RSSHub", "cat": "auto", "desc": "把沒有 RSS 的網站變成 RSS，收集資料的入口。", "price": "開源", "url": "https://github.com/DIYgod/RSSHub", "open": true, "added": "2026-11-24"},
+    {"name": "TrendRadar", "cat": "auto", "desc": "追各平台熱門話題，幫你找選題。", "price": "開源", "url": "https://github.com/sansan0/TrendRadar", "open": true, "note": "我們還沒裝過。", "added": "2026-11-24"},
+    {"name": "Gitleaks", "cat": "auto", "desc": "上傳程式前掃一次，找出不小心寫進去的密碼和 API 金鑰。", "price": "開源", "url": "https://github.com/gitleaks/gitleaks", "open": true, "added": "2026-07-25"},
+
+    {"name": "Obsidian", "cat": "know", "desc": "存在自己電腦的 Markdown 筆記。人看得懂，AI 也讀得到，我們的知識庫就放這裡。", "price": "免費", "url": "https://obsidian.md/", "use": true, "added": "2026-07-13"},
+    {"name": "Notion", "cat": "know", "desc": "資料庫和專案管理。手機丟進來的連結先放這裡分類。", "price": "免費／訂閱", "url": "https://www.notion.so/", "use": true, "added": "2026-07-13"},
+
+    {"name": "Anthropic Academy AI Fluency", "cat": "learn", "desc": "Anthropic 免費課程，教 4D 框架：委派、描述、判斷、查證。我們的教學主軸借自這裡。", "price": "免費", "url": "https://anthropic.skilljar.com/", "added": "2026-07-12"},
+    {"name": "awesome-agentic-ai-zh", "cat": "learn", "desc": "繁中學習地圖，240 多個免費資源，8–10 週從 ChatGPT 入門走到 Claude Code。", "price": "免費", "url": "https://github.com/WenyuChiou/awesome-agentic-ai-zh", "open": true, "added": "2026-10-22"},
+    {"name": "AI 學習地圖（madebypan）", "cat": "learn", "desc": "把 AI 工具和概念畫成一張地圖，適合想看全貌的人。", "price": "免費", "url": "https://madebypan.com/learn-ai-map", "added": "2026-07-13"}
+  ]
+}

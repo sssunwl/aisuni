@@ -3,7 +3,7 @@
 const root=document.body.dataset.root||'';
 const here=document.body.dataset.page||'';
 const LOGO='AISUN<span class="bang-i"><span class="bar"></span><span class="sunny"><span class="rays"></span><span class="core"></span></span></span>';
-const LINKS=[['learn','學習路線'],['tips','每天一招'],['prompts','Prompt 卡'],['cases','真實案例'],['news','AI 新聞']];
+const LINKS=[['learn','學習路線'],['guide','AI 基本功'],['tips','每天一招'],['prompts','Prompt 卡'],['tools','工具地圖'],['cases','真實案例'],['news','AI 新聞']];
 window.AISUN={root,LOGO,
  esc:s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
  copy(btn,text){const done=()=>{const o=btn.textContent;btn.classList.add('done');btn.textContent='✓ 已複製';setTimeout(()=>{btn.classList.remove('done');btn.textContent=o},1500)};
